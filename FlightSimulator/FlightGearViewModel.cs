@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace FlightSimulator
+namespace milestone1
 {
     class FlightGearViewModel : INotifyPropertyChanged
     {
         private IFlightGearModel model;
+        private double sliderValue;
+     
+
+        public double VM_Slider
+        {
+            get
+            {
+                return sliderValue;
+            }
+            set
+            {
+                sliderValue = value;
+                model.moveSlider(sliderValue);
+            }
+        }
 
         public FlightGearViewModel(IFlightGearModel model)
         {
@@ -28,6 +43,16 @@ namespace FlightSimulator
         public void VM_start(string path)
         {
             model.start(path);
+        }
+
+        public void VM_pause()
+        {
+            model.pause();
+        }
+
+        public void VM_play()
+        {
+            model.resume();
         }
         
         public event PropertyChangedEventHandler PropertyChanged;

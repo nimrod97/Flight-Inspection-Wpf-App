@@ -6,24 +6,26 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-namespace FlightSimulator
+namespace milestone1
 {
     class MyFlightGearModel : IFlightGearModel
     {
         ITelnetClient telnetClient;
         volatile Boolean isStopped;
         volatile Boolean isPaused;
-        volatile Boolean isPlayed;
         private ArrayList array;
+        private int currentLine;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
+
         public MyFlightGearModel(ITelnetClient telnetClient)
         {
             this.telnetClient = telnetClient;
             this.isStopped = false;
             this.isPaused = false;
+            this.currentLine = 0;
         }
         public void connect(string ip, int port)
         {
@@ -37,7 +39,6 @@ namespace FlightSimulator
 
         public void createLocalFile(string path)
         {
-           
             this.array = new ArrayList();
             try
             {
@@ -49,8 +50,6 @@ namespace FlightSimulator
                         array.Add(currentLine);
                     }
                 }
-
-
             }
             catch (Exception e)
             {
@@ -63,31 +62,48 @@ namespace FlightSimulator
             isPaused = true;
         }
 
+        public void resume()
+        {
+            isPaused = false;
+        }
+
         public void start(string path)
         {
-            if (!isPlayed)
-            {
-                isPlayed = true;
                 createLocalFile(path);
                 new Thread(delegate ()
                 {
-                    foreach (string line in array)
+
+                    currentLine = 0;
+                    int len = array.Count;
+                    Boolean innerStopped=false;
+                    while (!isStopped)
                     {
-                        if (!isPaused && !isStopped)
+                        for (; currentLine < len; currentLine++)
+                        // foreach (string line in array)
                         {
-                            telnetClient.write(line);
-                            Thread.Sleep(100);
+                            string line = array[currentLine].ToString();
+                            if (!isPaused && !isStopped)
+                            {
+                                telnetClient.write(line);
+                                Thread.Sleep(100);
+                            }
+                            else if (isPaused)
+                            {
+                                while (isPaused) { }
+
+                            }
+                            else // if (isStopped)
+                            {
+                                innerStopped = true;
+                                telnetClient.disconnect();
+                                break;
+                            }
                         }
-                        else if (isPaused)
-                        {
-                            while (isPaused) { }
-                        }
-                        else if (isStopped)
-                        {
-                            telnetClient.disconnect();
+                        if (innerStopped)
                             break;
-                        }
                     }
+                   
+
                     /*using (StreamReader sr = new StreamReader(path))
                     {
                         string currentLine;
@@ -104,12 +120,16 @@ namespace FlightSimulator
                     }*/
 
                 }).Start();
-            }
-            else
-            {
+            
 
-            }
 
         }
+        
+        public void moveSlider(double value)
+        {
+            // isPaused = true;
+            currentLine = Convert.ToInt32((value / 100.0) * array.Count);
+        }
+    
     }
 }

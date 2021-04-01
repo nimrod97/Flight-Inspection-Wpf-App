@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulator
+namespace milestone1
 {
     class MyTelnetClient : ITelnetClient
     {
