@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="Brown" >
     <Grid>
-        
+        <Button Name ="play" Content="▶️" HorizontalAlignment="Left" Margin="300,350,0,0" 
+                VerticalAlignment="Top" Height="50" Width="50" Click="Button_Click" 
+                Background="Black" Foreground="White" BorderBrush="black" FontSize="36"/>
+        <Button x:Name="BrowseButton" Content="Open" HorizontalAlignment="Left"   
+                Margin="42,356,0,0" VerticalAlignment="Top" Width="100" Click="BrowseButton_Click"   
+                RenderTransformOrigin="1.047,0.821" Height="40" FontSize="20" FontFamily="Arial" Background="White"/>
+        <Button Name ="pause" Content="⏸" HorizontalAlignment="Left" 
+                Margin="250,350,0,0" VerticalAlignment="Top" Height="50" Width="50" 
+                Foreground="White" BorderBrush="Black" Background="Black" 
+                FontSize="36"/>
+        <Button Name ="goLeft" Content="⏪️" HorizontalAlignment="Left" 
+                Margin="200,350,0,0" VerticalAlignment="Top" Height="50" Width="50" 
+                Foreground="White" BorderBrush="Black" Background="Black" 
+                FontSize="36"/>
+        <Button Name ="goRight" Content="⏩" HorizontalAlignment="Left" 
+                Margin="350,350,0,0" VerticalAlignment="Top" Height="50" Width="50" 
+                Foreground="White" BorderBrush="Black" Background="Black" 
+                FontSize="36"/>
+        <Button Name ="goToStart" Content="⏮" HorizontalAlignment="Left" 
+                Margin="150,350,0,0" VerticalAlignment="Top" Height="50" Width="50" 
+                Foreground="White" BorderBrush="Black" Background="Black" 
+                FontSize="36"/>
+        <Button Name ="goToEnd" Content="⏭" HorizontalAlignment="Left" 
+                Margin="400,350,0,0" VerticalAlignment="Top" Height="50" Width="50" 
+                Foreground="White" BorderBrush="Black" Background="Black" 
+                FontSize="36"/>
+        <Slider x:Name = "slider" 
+                HorizontalAlignment="Left" 
+                Minimum = "0" 
+                Maximum = "100"
+                Margin="40,320,0,0" 
+                VerticalAlignment="Top" 
+                Width="720"
+                ValueChanged = "slider_ValueChanged" />
+
     </Grid>
 </Window>
