@@ -62,6 +62,32 @@ namespace milestone1
             model.stop();
         }
         
+        public void VM_goRight()
+        {
+            if (VM_SliderValue < 96)
+                VM_SliderValue += 4;
+            else
+                VM_SliderValue = 99.5;
+        }
+
+        public void VM_goLeft()
+        {
+            if (VM_SliderValue > 4)
+                VM_SliderValue -= 4;
+            else
+                VM_SliderValue = 0;
+        }
+
+        public void VM_goToStart()
+        {
+            VM_SliderValue = 0;
+        }
+        public void VM_goToEnd()
+        {
+            VM_SliderValue = 99.5;
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)

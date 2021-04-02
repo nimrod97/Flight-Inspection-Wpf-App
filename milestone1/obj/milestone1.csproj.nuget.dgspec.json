@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj": {}
+    "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj": {
+    "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
+        "projectUniqueName": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
         "projectName": "milestone1",
-        "projectPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
+        "projectPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
         "packagesPath": "C:\\Users\\nimro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\obj\\",
+        "outputPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

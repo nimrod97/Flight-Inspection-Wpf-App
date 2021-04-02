@@ -93,22 +93,23 @@ namespace milestone1
 
         private void goRight_Click(object sender, RoutedEventArgs e)
         {
+            vm.VM_goRight();
 
         }
 
         private void goLeft_Click(object sender, RoutedEventArgs e)
         {
-
+            vm.VM_goLeft();
         }
 
         private void goToEnd_Click(object sender, RoutedEventArgs e)
         {
-
+            vm.VM_goToEnd();
         }
 
         private void goToStart_Click(object sender, RoutedEventArgs e)
         {
-
+            vm.VM_goToStart();
         }
     }
 }
