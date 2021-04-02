@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6fb86LRI+BATReOXNUrTwXa0Xwe+Nwy3KWsKzMWr63WPRbTaFO5RCBeQRkCeJRToqQWw0qGgO5gNAdFv60/agA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nimro\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\nimro\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
