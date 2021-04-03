@@ -22,9 +22,8 @@ namespace milestone1
     {
         private FlightGearViewModel vm;
         string path;
-        Boolean playFlag;
-        Boolean stopFlag;
-        //private MediaPlayer media = new MediaPlayer();
+        volatile Boolean playFlag;
+        volatile Boolean stopFlag;
         public MainWindow()
         {
             InitializeComponent();
@@ -54,13 +53,26 @@ namespace milestone1
 
         private void play_Click(object sender, RoutedEventArgs e)
         {
-            if (!playFlag||stopFlag)
+            if (stopFlag)
+            {
+                vm = null;
+                // creating new instance of vm
+                vm = new FlightGearViewModel(new MyFlightGearModel(new MyTelnetClient()));
+                DataContext = vm;
+                playFlag = false;
+                stopFlag = false;
+                vm.VM_connect("localhost", 5400);
+                vm.VM_start(path);
+                playFlag = true;
+            }
+
+            else if (!playFlag)
             {
                 vm.VM_connect("localhost", 5400);
                 vm.VM_start(path);
                 playFlag = true;
             }
-            else 
+            else // pauseFlag is pressed
             {
                 vm.VM_resume();
             }
@@ -71,8 +83,6 @@ namespace milestone1
         {
             int val = Convert.ToInt32(e.NewValue);
 
-            /*string msg = String.Format("Current value: {0}", val);
-            this.textBlock1.Text = msg;*/
         }
 
         private void FileNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

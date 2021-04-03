@@ -59,6 +59,7 @@ namespace milestone1
 
         public void VM_stop()
         {
+            VM_goToEnd();
             model.stop();
         }
         

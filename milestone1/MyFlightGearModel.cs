@@ -46,11 +46,6 @@ namespace milestone1
             telnetClient.connect(ip, port);
         }
 
-        //public void disconnect()
-        //{
-        //    isStopped = true;
-        //}
-
         public void createLocalFile(string path)
         {
             this.array = new ArrayList();
@@ -84,6 +79,7 @@ namespace milestone1
         public void stop()
         {
             isStopped = true;
+            telnetClient.write(array[array.Count-1].ToString());
             telnetClient.disconnect();
         }
 
@@ -111,31 +107,34 @@ namespace milestone1
                             else if (isPaused)
                             {
                                 while (isPaused) { }
-
                             }
                             else // if (isStopped)
                             {
                                 innerStopped = true;
-                                telnetClient.disconnect();
                                 break;
                             }
                         }
-                        if (innerStopped)
+                        if (innerStopped)                           
                             break;
+                        
                     }
                    
 
-
                 }).Start();
-            
-
 
         }
-        
+
         public void moveSlider(double value)
         {
             // isPaused = true;
             currentLine = Convert.ToInt32((value / 100.0) * array.Count);
+            SliderValue = value;
+            if (isPaused&&currentLine<array.Count)
+            {
+                telnetClient.write(array[currentLine].ToString());
+                Thread.Sleep(100);
+            }
+
         }
 
         public double getSliderValue()
