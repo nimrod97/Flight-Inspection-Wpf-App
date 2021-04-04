@@ -19,7 +19,7 @@
                 RenderTransformOrigin="1.047,0.821" Height="40" FontSize="20" FontFamily="Arial" Background="White"/>
         <TextBox HorizontalAlignment="Left" Height="43" Margin="147,356,0,0" TextWrapping="Wrap"   
                  Text="path" VerticalAlignment="Top" Width="271" x:Name="FileNameTextBox"/>
-        <!--<materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top"/>-->
+        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top"/>
         <Slider d:DataContext="{d:DesignInstance Type=local:FlightGearViewModel}" x:Name = "slider"
                         HorizontalAlignment="Left"
                         Minimum = "0"
