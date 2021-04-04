@@ -79,11 +79,11 @@ namespace milestone1
 
         }
 
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+/*        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int val = Convert.ToInt32(e.NewValue);
 
-        }
+        }*/
 
         private void FileNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -120,6 +120,22 @@ namespace milestone1
         private void goToStart_Click(object sender, RoutedEventArgs e)
         {
             vm.VM_goToStart();
+        }
+
+        private void speedValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                double newSpeed = Convert.ToDouble(speedValue.Text);
+                vm.VM_SpeedValue = newSpeed;
+                speedSlider.Value = newSpeed;
+            }
+            catch { }
+        }
+
+        private void speedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            speedValue.Text = String.Format("{0:0.00}", e.NewValue);
         }
     }
 }

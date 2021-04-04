@@ -21,6 +21,18 @@ namespace milestone1
             }
         }
 
+        public double VM_SpeedValue
+        {
+            get
+            {
+                return model.SpeedValue;
+            }
+            set
+            {
+                model.moveSpeedSlider(value);
+            }
+        }
+
         public FlightGearViewModel(IFlightGearModel model)
         {
             this.model = model;

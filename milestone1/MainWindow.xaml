@@ -9,7 +9,8 @@
         Title="MainWindow" Height="450" Width="800"
         Background="Black"
         >
-    <Grid>
+
+    <Grid RenderTransformOrigin="0.394,0.5">
         <Button Name ="play" Content="▶" HorizontalAlignment="Left" Margin="621,346,0,0" 
                 VerticalAlignment="Top" Height="50" Width="50" Click="play_Click" 
                 Background="Black" Foreground="White" BorderBrush="black" FontSize="36"/>
@@ -18,7 +19,7 @@
                 RenderTransformOrigin="1.047,0.821" Height="40" FontSize="20" FontFamily="Arial" Background="White"/>
         <TextBox HorizontalAlignment="Left" Height="43" Margin="147,356,0,0" TextWrapping="Wrap"   
                  Text="path" VerticalAlignment="Top" Width="271" x:Name="FileNameTextBox"/>
-        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top"/>
+        <!--<materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top"/>-->
         <Slider d:DataContext="{d:DesignInstance Type=local:FlightGearViewModel}" x:Name = "slider"
                         HorizontalAlignment="Left"
                         Minimum = "0"
@@ -26,7 +27,6 @@
                         Margin="40,320,0,0"
                         VerticalAlignment="Top"
                         Width="720"
-                        ValueChanged = "slider_ValueChanged"
                         Value = "{Binding VM_SliderValue}"
         />
         <Button Name ="pause" Content="⏸" HorizontalAlignment="Left" 
@@ -51,9 +51,19 @@
                 FontSize="36" Click="goToEnd_Click"/>
         <Button Name="stop" Content="⏹️" HorizontalAlignment="Left" Margin="423,346,0,0" VerticalAlignment="Top"
                 Height="50" Width="50" Foreground="White" BorderBrush="Black" Background="black" FontSize="36" Click="stop_Click"/>
-
-
-
+        <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
+                    Minimum = "0"
+                    Maximum = "5"            
+                    Value = "{Binding VM_SpeedValue, Mode=TwoWay, UpdateSourceTrigger=Default}"
+                    VerticalContentAlignment="Top" Margin="40,297,566,0" RenderTransformOrigin="0.538,0.696" ValueChanged="speedSlider_ValueChanged" VerticalAlignment="Top"
+        />
+        <TextBox Name ="speedValue"
+                Margin="135,250,585,0" VerticalAlignment="Top"
+                Foreground="Black" Background="White" 
+                FontSize="12" TextAlignment="Center" Height="30" RenderTransformOrigin="0.461,0.626" TextChanged="speedValue_TextChanged"/>
+        <Label x:Name="LabelplaySpeed" Content="Play speed" Margin="42,245,668,149" FontSize="16" Foreground="White" Background="Transparent" Width="90" RenderTransformOrigin="0.506,0.522" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>
+    
+

@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Release\net5.0-windows\
 milestone1
 none
 false
-TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+TRACE;RELEASE;NET;NET5_0;NETCOREAPP
 C:\Users\maors\Desktop\advanced programming 2\new\milestone1\App.xaml
 11407045341
 
@@ -16,5 +16,5 @@ C:\Users\maors\Desktop\advanced programming 2\new\milestone1\App.xaml
 1951082008933
 MainWindow.xaml;
 
-False
+True
 

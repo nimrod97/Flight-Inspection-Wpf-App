@@ -16,6 +16,7 @@ namespace milestone1
         private ArrayList array;
         private int currentLine;
         private double sliderValue;
+        private double speed;
 
 
         public double SliderValue
@@ -31,6 +32,17 @@ namespace milestone1
             }
         }
 
+        public double SpeedValue
+        {
+            get
+            {
+                return speed;
+            }
+            set
+            {
+                speed = value;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,6 +52,7 @@ namespace milestone1
             this.telnetClient = telnetClient;
             this.isStopped = false;
             this.isPaused = false;
+            this.speed = 1.00;
         }
         public void connect(string ip, int port)
         {
@@ -73,7 +86,8 @@ namespace milestone1
 
         public void resume()
         {
-            isPaused = false;
+            if (speed != 0)
+                isPaused = false;
         }
 
         public void stop()
@@ -102,7 +116,7 @@ namespace milestone1
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
-                                Thread.Sleep(100);
+                                Thread.Sleep(Convert.ToInt32(100 / speed));
                             }
                             else if (isPaused)
                             {
@@ -126,7 +140,6 @@ namespace milestone1
 
         public void moveSlider(double value)
         {
-            // isPaused = true;
             currentLine = Convert.ToInt32((value / 100.0) * array.Count);
             SliderValue = value;
             if (isPaused&&currentLine<array.Count)
@@ -142,13 +155,22 @@ namespace milestone1
             return Convert.ToDouble((currentLine * 100) / array.Count);
         }
 
-
-
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-    
+
+        public void moveSpeedSlider(double value)
+        {
+            if (value == 0)
+            {
+                pause();
+            }
+            else
+                resume();
+            SpeedValue = value;
+        }
+
     }
 }

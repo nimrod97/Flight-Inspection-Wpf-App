@@ -73,3 +73,28 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Deb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\ref\milestone1.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.exe
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.deps.json
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.runtimeconfig.json
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.runtimeconfig.dev.json
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\milestone1.pdb
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\MaterialDesignColors.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\bin\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1_MarkupCompile.cache
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1_MarkupCompile.lref
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.g.resources
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.AssemblyInfoInputs.cache
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.AssemblyInfo.cs
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.csproj.CoreCompileInputs.cache
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.csproj.CopyComplete
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.pdb
+C:\Users\maors\Desktop\advanced programming 2\new\milestone1\obj\Debug\net5.0-windows\milestone1.genruntimeconfig.cache

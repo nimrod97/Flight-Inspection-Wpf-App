@@ -9,6 +9,8 @@ namespace milestone1
     {
         double SliderValue { set; get; }
 
+        double SpeedValue { set; get; }
+
         void connect(string ip, int port);
         //void disconnect();
         void start(string path);
@@ -16,5 +18,7 @@ namespace milestone1
         void pause();
         void resume();
         void stop();
+        void moveSpeedSlider(double value);
+
     }
 }
