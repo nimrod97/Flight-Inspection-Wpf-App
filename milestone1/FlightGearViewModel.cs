@@ -37,10 +37,6 @@ namespace milestone1
             model.connect(ip, port);
         }
 
-        //public void VM_disconnect()
-        //{
-        //    model.disconnect();
-        //}
 
         public void VM_start(string path)
         {
@@ -86,6 +82,47 @@ namespace milestone1
         public void VM_goToEnd()
         {
             VM_SliderValue = 99.5;
+        }
+
+        public float VM_Altitude
+        {
+            get { return model.Altitude; }
+            set {; }
+        }
+
+        public float VM_AirSpeed
+        {
+            get { return model.AirSpeed; }
+            set {; }
+
+        }
+
+        public float VM_HeadingDeg
+        {
+            get { return model.HeadingDeg; }
+            set {; }
+
+        }
+
+        public float VM_PitchDeg
+        {
+            get { return model.PitchDeg; }
+            set {; }
+
+        }
+
+        public float VM_RollDeg
+        {
+            get { return model.RollDeg; }
+            set {; }
+
+        }
+
+        public float VM_YawDeg
+        {
+            get { return model.YawDeg; }
+            set {; }
+
         }
 
 

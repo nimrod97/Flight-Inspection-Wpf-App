@@ -8,8 +8,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Background="Black"
-        >
+    >
     <Grid>
+        <local:FlightDataWindow />
         <Button Name ="play" Content="▶" HorizontalAlignment="Left" Margin="621,346,0,0" 
                 VerticalAlignment="Top" Height="50" Width="50" Click="play_Click" 
                 Background="Black" Foreground="White" BorderBrush="black" FontSize="36"/>
@@ -18,7 +19,7 @@
                 RenderTransformOrigin="1.047,0.821" Height="40" FontSize="20" FontFamily="Arial" Background="White"/>
         <TextBox HorizontalAlignment="Left" Height="43" Margin="147,356,0,0" TextWrapping="Wrap"   
                  Text="path" VerticalAlignment="Top" Width="271" x:Name="FileNameTextBox"/>
-        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top"/>
+        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="300,110,0,0" VerticalAlignment="Top"/>
         <Slider d:DataContext="{d:DesignInstance Type=local:FlightGearViewModel}" x:Name = "slider"
                         HorizontalAlignment="Left"
                         Minimum = "0"
@@ -51,9 +52,6 @@
                 FontSize="36" Click="goToEnd_Click"/>
         <Button Name="stop" Content="⏹️" HorizontalAlignment="Left" Margin="423,346,0,0" VerticalAlignment="Top"
                 Height="50" Width="50" Foreground="White" BorderBrush="Black" Background="black" FontSize="36" Click="stop_Click"/>
-
-
-
 
     </Grid>
 </Window>

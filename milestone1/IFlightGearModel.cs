@@ -7,6 +7,12 @@ namespace milestone1
 {
     interface IFlightGearModel: INotifyPropertyChanged
     {
+        float Altitude { set; get; }
+        float AirSpeed { set; get; }
+        float HeadingDeg { set; get; }
+        float PitchDeg { set; get; }
+        float RollDeg { set; get; }
+        float YawDeg { set; get; }
         double SliderValue { set; get; }
 
         void connect(string ip, int port);

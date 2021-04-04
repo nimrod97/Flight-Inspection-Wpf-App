@@ -73,3 +73,6 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Deb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\ref\milestone1.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\FlightDataWindow.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\FlightDataWindow.baml
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs

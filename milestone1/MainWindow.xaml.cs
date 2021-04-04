@@ -85,11 +85,6 @@ namespace milestone1
 
         }
 
-        private void FileNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void pause_Click(object sender, RoutedEventArgs e)
         {
             vm.VM_pause();
@@ -121,5 +116,7 @@ namespace milestone1
         {
             vm.VM_goToStart();
         }
+
+     
     }
 }

@@ -16,7 +16,12 @@ namespace milestone1
         private ArrayList array;
         private int currentLine;
         private double sliderValue;
-
+        private float altitude;
+        private float airSpeed;
+        private float headingDeg;
+        private float pitchDeg;
+        private float rollDeg;
+        private float yawDeg;
 
         public double SliderValue
         {
@@ -31,6 +36,78 @@ namespace milestone1
             }
         }
 
+        public float Altitude
+        {
+            get
+            {
+                return altitude;
+            }
+            set
+            {
+                altitude = value;
+                NotifyPropertyChanged("Altitude");
+            }
+        }
+        public float AirSpeed
+        {
+            get
+            {
+                return airSpeed;
+            }
+            set
+            {
+                airSpeed = value;
+                NotifyPropertyChanged("AirSpeed");
+            }
+        }
+        public float HeadingDeg
+        {
+            get
+            {
+                return headingDeg;
+            }
+            set
+            {
+                headingDeg = value;
+                NotifyPropertyChanged("HeadingDeg");
+            }
+        }
+        public float PitchDeg
+        {
+            get
+            {
+                return pitchDeg;
+            }
+            set
+            {
+                pitchDeg = value;
+                NotifyPropertyChanged("PitchDeg");
+            }
+        }
+        public float RollDeg
+        {
+            get
+            {
+                return rollDeg;
+            }
+            set
+            {
+                rollDeg = value;
+                NotifyPropertyChanged("RollDeg");
+            }
+        }
+        public float YawDeg
+        {
+            get
+            {
+                return yawDeg;
+            }
+            set
+            {
+                yawDeg = value;
+                NotifyPropertyChanged("YawDeg");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,6 +115,11 @@ namespace milestone1
         public MyFlightGearModel(ITelnetClient telnetClient)
         {
             this.telnetClient = telnetClient;
+            this.isStopped = false;
+            this.isPaused = false;
+        }
+        public MyFlightGearModel()
+        {
             this.isStopped = false;
             this.isPaused = false;
         }
@@ -98,7 +180,14 @@ namespace milestone1
                         // foreach (string line in array)
                         {
                             string line = array[currentLine].ToString();
+                            string[] data = line.Split(",");
                             SliderValue = getSliderValue();
+                            Altitude = (float)Convert.ToDouble(data[25]);
+                            RollDeg= (float)Convert.ToDouble(data[17]);
+                            PitchDeg=(float)Convert.ToDouble(data[18]);
+                            HeadingDeg=(float)Convert.ToDouble(data[19]);
+                            YawDeg=(float)Convert.ToDouble(data[20]);
+                            AirSpeed=(float)Convert.ToDouble(data[21]);
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
