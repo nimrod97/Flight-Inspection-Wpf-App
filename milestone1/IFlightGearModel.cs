@@ -19,6 +19,7 @@ namespace milestone1
         float Throttle { set; get; }
 
         double SliderValue { set; get; }
+        double SimulatorSpeed { set; get; }
 
         void connect(string ip, int port);
         //void disconnect();
@@ -27,5 +28,6 @@ namespace milestone1
         void pause();
         void resume();
         void stop();
+        void moveSimulatorSpeed(double value);
     }
 }

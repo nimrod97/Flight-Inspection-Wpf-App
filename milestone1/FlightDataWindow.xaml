@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="0,0,-21,-39" RenderTransformOrigin="0.241,0.485">
+    <Grid Margin="0,0,-21,-39" RenderTransformOrigin="0.241,0.485" HorizontalAlignment="Right" Width="821">
         <TextBox HorizontalAlignment="Left" Margin="10,10,0,0" Text="Altitude:" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"/>
         <TextBox HorizontalAlignment="Left" Margin="83,10,0,0" Text="{Binding VM_Altitude, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="280,10,0,0" Text="Air speed: " TextWrapping="Wrap" VerticalAlignment="Top" Width="67"/>
@@ -276,7 +276,7 @@
                 </Canvas>
             </Canvas>
         </Viewbox>
-        <Slider HorizontalAlignment="Left" Margin="442,238,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+        <Slider HorizontalAlignment="Left" Margin="442,238,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_ValueChanged">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -286,8 +286,18 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Slider HorizontalAlignment="Left" Margin="574,365,0,0" VerticalAlignment="Top" Width="120"/>
+        <Slider HorizontalAlignment="Left" Margin="574,365,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged_1"/>
         <TextBox HorizontalAlignment="Left" Margin="612,388,0,0" Text="rudder" TextWrapping="Wrap" VerticalAlignment="Top" Width="44" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Margin="457,238,0,0" Text="throttle" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.385"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
 
 
 

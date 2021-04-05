@@ -20,39 +20,22 @@ namespace milestone1
     /// </summary>
     public partial class FlightDataWindow : UserControl
     {
-        //private FlightDataViewModel vm;
         public FlightDataWindow()
         {
             InitializeComponent();
-            //vm = new FlightDataViewModel(new MyFlightGearModel());
-            //DataContext = vm;
         }
 
-        private void altitude_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
-
-        private void airSpeed_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
-        private void headingDeg_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void pitchDeg_TextChanged(object sender, TextChangedEventArgs e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }
 
-        private void rollDeg_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void yawDeg_TextChanged(object sender, TextChangedEventArgs e)
+        private void Slider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

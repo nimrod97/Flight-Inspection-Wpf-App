@@ -16,6 +16,7 @@ namespace milestone1
         private ArrayList array;
         private int currentLine;
         private double sliderValue;
+        private double simulatorspeed;
         private float altitude;
         private float airSpeed;
         private float headingDeg;
@@ -37,6 +38,18 @@ namespace milestone1
             {
                 sliderValue = value;
                 NotifyPropertyChanged("SliderValue");
+            }
+        }
+
+        public double SimulatorSpeed
+        {
+            get
+            {
+                return simulatorspeed;
+            }
+            set
+            {
+                simulatorspeed = value;
             }
         }
 
@@ -171,6 +184,7 @@ namespace milestone1
             this.telnetClient = telnetClient;
             this.isStopped = false;
             this.isPaused = false;
+            this.simulatorspeed = 1.00;
         }
  
         public void connect(string ip, int port)
@@ -205,7 +219,8 @@ namespace milestone1
 
         public void resume()
         {
-            isPaused = false;
+            if(simulatorspeed!=0)
+                isPaused = false;
         }
 
         public void stop()
@@ -285,6 +300,16 @@ namespace milestone1
             return Convert.ToDouble((currentLine * 100) / array.Count);
         }
 
+        public void moveSimulatorSpeed(double value)
+        {
+            if (value == 0)
+            {
+                pause();
+            }
+            else
+                resume();
+            SimulatorSpeed = value;
+        }
 
 
         public void NotifyPropertyChanged(string propName)

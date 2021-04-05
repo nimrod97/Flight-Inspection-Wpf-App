@@ -117,6 +117,34 @@ namespace milestone1
             vm.VM_goToStart();
         }
 
-     
+        private void FileNameTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SimulatorSpeed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                double newSpeed = Convert.ToDouble(SimulatorSpeed.Text);
+                vm.VM_SimulatorSpeed = newSpeed;
+                speedSlider.Value = newSpeed;
+            }
+            catch { }
+        }
+
+        private void SimulatorSpeed_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            SimulatorSpeed.Text = String.Format("{0:0.00}", e.NewValue);
+        }
+
+        private void LabelplaySpeed_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
