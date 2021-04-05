@@ -260,7 +260,7 @@ namespace milestone1
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
-                                Thread.Sleep(100);
+                                Thread.Sleep(Convert.ToInt32(100 / SimulatorSpeed));
                             }
                             else if (isPaused)
                             {

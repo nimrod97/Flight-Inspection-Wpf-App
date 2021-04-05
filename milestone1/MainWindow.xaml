@@ -8,7 +8,7 @@
         d:DataContext="{d:DesignInstance Type=local:MyFlightGearModel}" x:Class="milestone1.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
-        Background="Black"
+        Background="White"
     >
     <Grid>
         <local:FlightDataWindow />
@@ -156,63 +156,6 @@
             Style="{StaticResource roundButton}">
             <Image Source="goEnd.jpg" />
         </Button>
-        <Button
-            Width="242"
-            Height="292"
-            Margin="49,110,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="111"
-            Height="101"
-            Margin="309,115,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="111"
-            Height="101"
-            Margin="308,111,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="117"
-            Height="102"
-            Margin="440,112,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="246"
-            Height="168"
-            Margin="312,234,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="246"
-            Height="168"
-            Margin="312,234,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button" />
-        <Button
-            Width="130"
-            Height="128"
-            Margin="611,34,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="joystick" />
-
-        <Button
-            Width="124"
-            Height="195"
-            Margin="616,208,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="yaw\raw\pitch" Click="Button_Click" />
         <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
                     Minimum = "0"
                     Maximum = "5"            
