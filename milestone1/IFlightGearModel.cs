@@ -13,6 +13,11 @@ namespace milestone1
         float PitchDeg { set; get; }
         float RollDeg { set; get; }
         float YawDeg { set; get; }
+        float Aileron { set; get; }
+        float Elevator { set; get; }
+        float Rudder { set; get; }
+        float Throttle { set; get; }
+
         double SliderValue { set; get; }
 
         void connect(string ip, int port);

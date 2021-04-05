@@ -8,7 +8,6 @@ namespace milestone1
     class FlightGearViewModel : INotifyPropertyChanged
     {
         private IFlightGearModel model;
-        //private double sliderValue;
         public double VM_SliderValue
         {
             get
@@ -123,6 +122,26 @@ namespace milestone1
             get { return model.YawDeg; }
             set {; }
 
+        }
+        public float VM_Aileron
+        {
+            get { return model.Aileron; }
+            set {; }
+        }
+        public float VM_Elevator
+        {
+            get { return model.Elevator; }
+            set {; }
+        }
+        public float VM_Rudder
+        {
+            get { return model.Rudder; }
+            set {; }
+        }
+        public float VM_Throttle
+        {
+            get { return model.Throttle; }
+            set {; }
         }
 
 

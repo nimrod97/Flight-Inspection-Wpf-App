@@ -22,6 +22,10 @@ namespace milestone1
         private float pitchDeg;
         private float rollDeg;
         private float yawDeg;
+        private float aileron;
+        private float elevator;
+        private float rudder;
+        private float throttle;
 
         public double SliderValue
         {
@@ -109,6 +113,56 @@ namespace milestone1
             }
         }
 
+        public float Aileron
+        {
+            get
+            {
+                return aileron;
+            }
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+        }
+        public float Elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+        }
+        public float Rudder
+        {
+            get
+            {
+                return rudder;
+            }
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+        }
+        public float Throttle
+        {
+            get
+            {
+                return throttle;
+            }
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -118,11 +172,7 @@ namespace milestone1
             this.isStopped = false;
             this.isPaused = false;
         }
-        public MyFlightGearModel()
-        {
-            this.isStopped = false;
-            this.isPaused = false;
-        }
+ 
         public void connect(string ip, int port)
         {
             telnetClient.connect(ip, port);
@@ -182,7 +232,11 @@ namespace milestone1
                             string line = array[currentLine].ToString();
                             string[] data = line.Split(",");
                             SliderValue = getSliderValue();
-                            Altitude = (float)Convert.ToDouble(data[25]);
+                            Aileron= (float)Convert.ToDouble(data[0]);
+                            Elevator = (float)Convert.ToDouble(data[1]);
+                            Rudder = (float)Convert.ToDouble(data[2]);
+                            Throttle = (float)Convert.ToDouble(data[6]);
+                            Altitude = (float)Convert.ToDouble(data[16]);
                             RollDeg= (float)Convert.ToDouble(data[17]);
                             PitchDeg=(float)Convert.ToDouble(data[18]);
                             HeadingDeg=(float)Convert.ToDouble(data[19]);
