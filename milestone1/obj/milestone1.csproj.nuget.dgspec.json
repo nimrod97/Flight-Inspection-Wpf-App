@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj": {}
+    "C:\\Users\\maors\\Desktop\\advanced programming 2\\newest\\milestone1\\milestone1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj": {
+    "C:\\Users\\maors\\Desktop\\advanced programming 2\\newest\\milestone1\\milestone1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj",
+        "projectUniqueName": "C:\\Users\\maors\\Desktop\\advanced programming 2\\newest\\milestone1\\milestone1.csproj",
         "projectName": "milestone1",
-        "projectPath": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj",
-        "packagesPath": "C:\\Users\\barrt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\obj\\",
+        "projectPath": "C:\\Users\\maors\\Desktop\\advanced programming 2\\newest\\milestone1\\milestone1.csproj",
+        "packagesPath": "C:\\Users\\maors\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maors\\Desktop\\advanced programming 2\\newest\\milestone1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\barrt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\maors\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -47,6 +43,10 @@
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.0.0, )"
+            },
+            "OxyPlot.Wpf": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
