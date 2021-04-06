@@ -156,6 +156,14 @@ namespace milestone1
             set {; }
         }
 
+        public string[] VM_Properties
+        {
+            get
+            {
+                return model.Properties;
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

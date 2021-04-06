@@ -16,28 +16,13 @@ using System.Windows.Shapes;
 namespace milestone1
 {
     /// <summary>
-    /// Interaction logic for flightDataWindow.xaml
+    /// Interaction logic for Joystick.xaml
     /// </summary>
-    public partial class FlightDataWindow : UserControl
+    public partial class Joystick : UserControl
     {
-        public FlightDataWindow()
+        public Joystick()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void Slider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
         }
     }
 }

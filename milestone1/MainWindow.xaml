@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:milestone1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        d:DataContext="{d:DesignInstance Type=local:MyFlightGearModel}" x:Class="milestone1.MainWindow"
+        d:DataContext="{d:DesignInstance Type=local:MyFlightGearModel}"
+        x:Class="milestone1.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
         Background="White"
     >
     <Grid>
-        <local:FlightDataWindow />
         <Button
             x:Name="BrowseButton"
             Width="100"
@@ -69,7 +69,7 @@
             Click="play_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/play.png" />
+            <Image Source="C:\Users\maors\Desktop\advanced programming 2\new11\milestone1\play.jpg" />
         </Button>
 
         <Button
@@ -83,7 +83,7 @@
             Click="stop_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/stop.png" />
+            <Image Source="images/stop.jpg" />
 
         </Button>
 
@@ -98,7 +98,7 @@
             Click="goToStart_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/goStart.png" />
+            <Image Source="images/goStart.jpg" />
         </Button>
 
         <Button
@@ -112,7 +112,7 @@
             Click="goLeft_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/goLeft.png" />
+            <Image Source="images/goLeft.jpg" />
         </Button>
 
         <Button
@@ -126,7 +126,7 @@
             Click="pause_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/pause.png" />
+            <Image Source="images/pause.jpg" />
         </Button>
 
         <Button
@@ -140,7 +140,7 @@
             Click="goRight_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/goRight.png"/>
+            <Image Source="images/goRight.jpg"/>
         </Button>
 
         <Button
@@ -154,8 +154,48 @@
             Click="goToEnd_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="images/goEnd.png" />
+            <Image Source="images/goEnd.jpg" />
         </Button>
+        <local:DataList Margin="10,115,520,156"/>
+        <Button
+            Width="111"
+            Height="101"
+            Margin="309,115,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Button" />
+        <Button
+            Width="111"
+            Height="101"
+            Margin="308,111,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Button" />
+        <Button
+            Width="117"
+            Height="102"
+            Margin="440,112,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Button" />
+        <Button
+            Width="246"
+            Height="168"
+            Margin="312,234,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Button" />
+        <Button
+            Width="246"
+            Height="168"
+            Margin="312,234,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Button" />
+
+        <local:Joystick Margin="578,10,32,362"/>
+        <local:FlightDataWindow Margin="578,234,24,145"/>
+
         <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
                     Minimum = "0"
                     Maximum = "5"            

@@ -21,6 +21,8 @@ namespace milestone1
         double SliderValue { set; get; }
         double SimulatorSpeed { set; get; }
 
+        string[] Properties { get; }
+
         void connect(string ip, int port);
         //void disconnect();
         void start(string path);

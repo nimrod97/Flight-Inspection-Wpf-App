@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Xml;
 
 namespace milestone1
 {
@@ -27,6 +28,8 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
+
+        private string[] properties;
 
         public double SliderValue
         {
@@ -175,9 +178,15 @@ namespace milestone1
             }
         }
 
+        public string[] Properties
+        {
+            get
+            {
+                return properties;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         public MyFlightGearModel(ITelnetClient telnetClient)
         {
@@ -185,6 +194,22 @@ namespace milestone1
             this.isStopped = false;
             this.isPaused = false;
             this.simulatorspeed = 1.00;
+            createProperties();
+        }
+
+        private void createProperties()
+        {
+            XmlDataDocument xmldoc = new XmlDataDocument();
+            FileStream fs = new FileStream("playback_small.xml", FileMode.Open, FileAccess.Read);
+            xmldoc.Load(fs);
+            XmlNodeList xmlnode = xmldoc.DocumentElement.SelectNodes("/PropertyList/generic/output/chunk");
+            int count = xmlnode.Count;
+            properties = new string[count];
+            for (int i = 0; i < count; i++)
+            {
+                properties[i] = xmlnode[i].SelectSingleNode("name").InnerText;
+            }
+            fs.Close();
         }
  
         public void connect(string ip, int port)
@@ -235,14 +260,12 @@ namespace milestone1
                 createLocalFile(path);
                 new Thread(delegate ()
                 {
-
                     currentLine = 0;
                     int len = array.Count;
                     Boolean innerStopped=false;
                     while (!isStopped)
                     {
                         for (; currentLine < len; currentLine++)
-                        // foreach (string line in array)
                         {
                             string line = array[currentLine].ToString();
                             string[] data = line.Split(",");
@@ -260,7 +283,7 @@ namespace milestone1
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
-                                Thread.Sleep(Convert.ToInt32(100 / SimulatorSpeed));
+                                Thread.Sleep((int)(100.0 / SimulatorSpeed));
                             }
                             else if (isPaused)
                             {
