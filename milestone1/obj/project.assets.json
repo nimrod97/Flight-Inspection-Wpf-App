@@ -91,25 +91,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\barrt\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\noa miara\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj",
+      "projectUniqueName": "C:\\Users\\noa miara\\Source\\Repos\\milestoneNew\\milestone1\\milestone1.csproj",
       "projectName": "milestone1",
-      "projectPath": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj",
-      "packagesPath": "C:\\Users\\barrt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\obj\\",
+      "projectPath": "C:\\Users\\noa miara\\Source\\Repos\\milestoneNew\\milestone1\\milestone1.csproj",
+      "packagesPath": "C:\\Users\\noa miara\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\noa miara\\Source\\Repos\\milestoneNew\\milestone1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\barrt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\noa miara\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"

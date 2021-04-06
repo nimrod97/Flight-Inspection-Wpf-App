@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "WLJS9jGJuaDM2QCI3AuKWlIRWf16LMaVldRDGvsL420QsryXdwJoWDmoV1No2ee1AjAlPxTn8UVKRQaMCNMGyg==",
+  "dgSpecHash": "O557HY/a4dp2qOg9uCbqUWQxXgsvDrCDlSH4vvWTDa1IL88iZtCVUI5ULl4XRyYvc6YbYRh1ebXJXEBUbyr2ww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\barrt\\Desktop\\milestone1\\milestone1\\milestone1.csproj",
+  "projectFilePath": "C:\\Users\\noa miara\\Source\\Repos\\milestoneNew\\milestone1\\milestone1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\barrt\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
-    "C:\\Users\\barrt\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
+    "C:\\Users\\noa miara\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\noa miara\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
   ],
   "logs": []
 }
