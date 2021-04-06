@@ -6,8 +6,9 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\barrt\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\barrt\\.nuget\\packages",
+      "C:\\Users\\nimro\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\nimro\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
       "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
     ],
     "configProperties": {

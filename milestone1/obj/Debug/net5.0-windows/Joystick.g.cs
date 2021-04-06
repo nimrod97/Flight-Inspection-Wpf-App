@@ -93,7 +93,7 @@ namespace milestone1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/milestone1_1kbaa23a_wpftmp;component/joystick.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/milestone1;component/joystick.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Joystick.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
