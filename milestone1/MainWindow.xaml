@@ -69,7 +69,7 @@
             Click="play_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="play.jpg" />
+            <Image Source="images/play.png" />
         </Button>
 
         <Button
@@ -83,7 +83,7 @@
             Click="stop_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="stop.jpg" />
+            <Image Source="images/stop.png" />
 
         </Button>
 
@@ -98,7 +98,7 @@
             Click="goToStart_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="goStart.jpg" />
+            <Image Source="images/goStart.png" />
         </Button>
 
         <Button
@@ -112,7 +112,7 @@
             Click="goLeft_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="goLeft.jpg" />
+            <Image Source="images/goLeft.png" />
         </Button>
 
         <Button
@@ -126,7 +126,7 @@
             Click="pause_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="pause.jpg" />
+            <Image Source="images/pause.png" />
         </Button>
 
         <Button
@@ -140,7 +140,7 @@
             Click="goRight_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="goRight.jpg"/>
+            <Image Source="images/goRight.png"/>
         </Button>
 
         <Button
@@ -154,7 +154,7 @@
             Click="goToEnd_Click"
             FontFamily="Verdana"
             Style="{StaticResource roundButton}">
-            <Image Source="goEnd.jpg" />
+            <Image Source="images/goEnd.png" />
         </Button>
         <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
                     Minimum = "0"

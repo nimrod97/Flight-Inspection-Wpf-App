@@ -8,7 +8,55 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="goEnd.jpg" />
+    <None Remove="goLeft.jpg" />
+    <None Remove="goRight.jpg" />
+    <None Remove="goStart.jpg" />
+    <None Remove="images\goEnd.jpg" />
+    <None Remove="images\goEnd.png" />
+    <None Remove="images\goLeft.jpg" />
+    <None Remove="images\goLeft.png" />
+    <None Remove="images\goRight.jpg" />
+    <None Remove="images\goRight.png" />
+    <None Remove="images\goStart.jpg" />
+    <None Remove="images\goStart.png" />
+    <None Remove="images\pause.jpg" />
+    <None Remove="images\pause.png" />
+    <None Remove="images\play.jpg" />
+    <None Remove="images\play.png" />
+    <None Remove="images\stop.jpg" />
+    <None Remove="images\stop.png" />
+    <None Remove="pause.jpg" />
+    <None Remove="play.jpg" />
+    <None Remove="stop.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\goEnd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\goLeft.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\goRight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\goStart.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\stop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
