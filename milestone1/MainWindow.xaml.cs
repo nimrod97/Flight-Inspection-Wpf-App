@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OxyPlot;
+using OxyPlot.Series;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -145,6 +147,11 @@ namespace milestone1
         private void LabelplaySpeed_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            vm.VM_PointsCurrentChoice.Add(new DataPoint(1, 10));
         }
     }
 }

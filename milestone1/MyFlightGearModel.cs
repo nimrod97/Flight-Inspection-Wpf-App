@@ -6,6 +6,8 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Xml;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace milestone1
 {
@@ -28,6 +30,7 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
+        private IList<DataPoint> pointsCurrentChoice;
 
         private string[] properties;
 
@@ -186,6 +189,18 @@ namespace milestone1
             }
         }
 
+        public IList<DataPoint> PointsCurrentChoice
+        {
+            get
+            {
+                return pointsCurrentChoice;
+            }
+            set
+            {
+
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MyFlightGearModel(ITelnetClient telnetClient)
@@ -195,6 +210,11 @@ namespace milestone1
             this.isPaused = false;
             this.simulatorspeed = 1.00;
             createProperties();
+            pointsCurrentChoice = new List<DataPoint>();
+/*            pointsCurrentChoice.Add(new DataPoint(0, 0));
+            pointsCurrentChoice.Add(new DataPoint(3, 3));*/
+
+
         }
 
         private void createProperties()

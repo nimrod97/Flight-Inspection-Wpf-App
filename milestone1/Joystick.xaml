@@ -5,13 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:milestone1"
              mc:Ignorable="d" Height="140" Width="177">
-    <!--<Button
-            Width="130"
-            Height="128"
-            Margin="611,34,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="joystick" />-->
     <Grid d:DataContext="{d:DesignInstance Type=local:FlightGearViewModel}" Margin="0,0,-51,-34">
         <Viewbox Margin="13,38,77,52">
             <Canvas

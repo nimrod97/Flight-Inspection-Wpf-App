@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
+using OxyPlot;
+using OxyPlot.Series;
+
 namespace milestone1
 {
     class FlightGearViewModel : INotifyPropertyChanged
@@ -40,7 +43,18 @@ namespace milestone1
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
-            
+        }
+
+        public IList<DataPoint> VM_PointsCurrentChoice
+        {
+            get
+            {
+                return this.model.PointsCurrentChoice;
+            }
+            set
+            {
+
+            }
         }
 
         public void VM_connect(string ip, int port)
