@@ -1,5 +1,6 @@
 ﻿using OxyPlot;
 using OxyPlot.Series;
+using OxyPlot.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace milestone1
             DataContext = vm;
             playFlag = false;
             stopFlag = false;
+            PropertiesList.DataContext = vm;
         }
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
@@ -151,7 +153,7 @@ namespace milestone1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            vm.VM_PointsCurrentChoice.Add(new DataPoint(1, 10));
+
         }
     }
 }

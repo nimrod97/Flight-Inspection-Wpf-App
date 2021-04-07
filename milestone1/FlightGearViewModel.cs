@@ -5,12 +5,19 @@ using System.Text;
 
 using OxyPlot;
 using OxyPlot.Series;
+using OxyPlot.Annotations;
 
 namespace milestone1
 {
     class FlightGearViewModel : INotifyPropertyChanged
     {
         private IFlightGearModel model;
+        public PlotModel VM_PlotModel
+        {
+            get { return model.PlotModel; }
+            set { model.PlotModel = value; NotifyPropertyChanged("PlotModel"); }
+        }
+
         public double VM_SliderValue
         {
             get
@@ -44,7 +51,7 @@ namespace milestone1
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
         }
-
+/*
         public IList<DataPoint> VM_PointsCurrentChoice
         {
             get
@@ -55,7 +62,7 @@ namespace milestone1
             {
 
             }
-        }
+        }*/
 
         public void VM_connect(string ip, int port)
         {
@@ -178,6 +185,17 @@ namespace milestone1
             }
         }
 
+        public string VM_CurrerntChoice
+        {
+            get
+            {
+                return model.CurrerntChoice;
+            }
+            set
+            {
+                model.CurrerntChoice = value;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -185,8 +203,6 @@ namespace milestone1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-
-        
+        }        
     }
 }

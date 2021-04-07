@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Xml;
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 
 namespace milestone1
@@ -30,7 +31,12 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
-        private IList<DataPoint> pointsCurrentChoice;
+/*        private IList<DataPoint> pointsCurrentChoice;
+*/        private PlotModel plotModel;
+
+        private string currerntChoice;
+
+
         private Dictionary<string, ArrayList> dict;
 
         private string[] properties;
@@ -47,7 +53,6 @@ namespace milestone1
                 NotifyPropertyChanged("SliderValue");
             }
         }
-
         public double SimulatorSpeed
         {
             get
@@ -59,7 +64,6 @@ namespace milestone1
                 simulatorspeed = value;
             }
         }
-
         public float Altitude
         {
             get
@@ -132,7 +136,6 @@ namespace milestone1
                 NotifyPropertyChanged("YawDeg");
             }
         }
-
         public float Aileron
         {
             get
@@ -189,7 +192,7 @@ namespace milestone1
                 return properties;
             }
         }
-
+/*
         public IList<DataPoint> PointsCurrentChoice
         {
             get
@@ -200,6 +203,24 @@ namespace milestone1
             {
 
             }
+        }*/
+
+        public string CurrerntChoice
+        {
+            get
+            {
+                return currerntChoice;
+            }
+            set
+            {
+                currerntChoice = value;
+            }
+        }
+
+        public PlotModel PlotModel
+        {
+            get { return plotModel; }
+            set { plotModel = value;}
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -210,10 +231,19 @@ namespace milestone1
             this.isStopped = false;
             this.isPaused = false;
             this.simulatorspeed = 1.00;
-            pointsCurrentChoice = new List<DataPoint>();
-/*            pointsCurrentChoice.Add(new DataPoint(0, 0));
-            pointsCurrentChoice.Add(new DataPoint(3, 3));*/
+/*            pointsCurrentChoice = new List<DataPoint>();
+*/            createProperties();
+            SetUpModel();
+            this.currerntChoice = null;
         }
+
+        private void SetUpModel()
+        {
+            plotModel = new PlotModel();
+            LineSeries l = new LineSeries();
+            plotModel.Series.Add(l);
+        }
+
         private void initializeDictionary()
         {
             dict = new Dictionary<string, ArrayList>();
@@ -326,10 +356,10 @@ namespace milestone1
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
-                    string currentLine;
-                    while ((currentLine = sr.ReadLine()) != null)
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        array.Add(currentLine);
+                        array.Add(line);
                     }
                 }
             }
@@ -360,11 +390,13 @@ namespace milestone1
         public void start(string path)
         {
             createLocalFile(path);
-            createProperties();
             initializeDictionary();
+            currentLine = 0;
+            string lastChoice = null;
+            int lastLine = 0;
+
             new Thread(delegate ()
                 {
-                    currentLine = 0;
                     int len = array.Count;
                     Boolean innerStopped=false;
                     while (!isStopped)
@@ -386,17 +418,6 @@ namespace milestone1
                             YawDeg = (float)Convert.ToDouble(dict["side-slip-deg"][currentLine]);
                             AirSpeed = (float)Convert.ToDouble(dict["airspeed-kt"][currentLine]);
 
-/*                            Aileron = (float)Convert.ToDouble(data[0]);
-                            Elevator = (float)Convert.ToDouble(data[1]);
-                            Rudder = (float)Convert.ToDouble(data[2]);
-                            Throttle = (float)Convert.ToDouble(data[6]);
-                            Altitude = (float)Convert.ToDouble(data[16]);
-                            RollDeg= (float)Convert.ToDouble(data[17]);
-                            PitchDeg=(float)Convert.ToDouble(data[18]);
-                            HeadingDeg=(float)Convert.ToDouble(data[19]);
-                            YawDeg=(float)Convert.ToDouble(data[20]);
-                            AirSpeed=(float)Convert.ToDouble(data[21]);*/
-
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
@@ -414,17 +435,59 @@ namespace milestone1
                         }
                         if (innerStopped)                           
                             break;
-                        
                     }
-                   
-
                 }).Start();
+            new Thread(delegate ()
+            {
+                builfCurrentChoiceGraph(ref lastChoice, ref lastLine);
+            }).Start();
+        }
 
+        private void builfCurrentChoiceGraph(ref string lastChoice, ref int lastLine)
+        {
+            while (!isStopped)
+            {
+                if (currerntChoice != null)
+                {
+                    if ((lastChoice == null || string.Compare(lastChoice, currerntChoice) == 0) && (currentLine >= lastLine))
+                    {
+                        LineSeries l = (LineSeries)(plotModel.Series[0] as LineSeries);
+                        if (currentLine - lastLine > 10)
+                        {
+                            buildLine(lastLine, currentLine, l, ref lastLine);
+                        }
+                        else if (currentLine % 10 == 0 && currentLine != lastLine)
+                        {
+                            l.Points.Add(new DataPoint(currentLine / 10, (float)Convert.ToDouble(dict[currerntChoice][currentLine])));
+                            plotModel.InvalidatePlot(true);
+                            lastLine = Math.Max(lastLine, currentLine);
+                        }
+                    }
+                    else
+                    {
+                        plotModel.Series.Remove(plotModel.Series[0]);
+                        LineSeries l = new LineSeries();
+                        buildLine(0, currentLine, l, ref lastLine);
+                        plotModel.Series.Add(l);
+                        plotModel.InvalidatePlot(true);
+                        lastChoice = currerntChoice;
+                        lastLine = currentLine;
+                    }
+                }
+            }
+        }
+
+        private void buildLine(int start, int end, LineSeries l, ref int lastLine)
+        {
+            for (int i = start; i <= end; i += 10)
+            {
+                l.Points.Add(new DataPoint(i / 10, (float)Convert.ToDouble(dict[currerntChoice][i])));
+                lastLine = i;
+            }
         }
 
         public void moveSlider(double value)
         {
-            // isPaused = true;
             currentLine = Convert.ToInt32((value / 100.0) * array.Count);
             SliderValue = value;
             if (isPaused&&currentLine<array.Count)

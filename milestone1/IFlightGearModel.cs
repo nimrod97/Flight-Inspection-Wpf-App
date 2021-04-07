@@ -34,6 +34,9 @@ namespace milestone1
         void stop();
         void moveSimulatorSpeed(double value);
 
-        IList<DataPoint> PointsCurrentChoice { get; set; }
-    }
+        PlotModel PlotModel { get; set; }
+        public string CurrerntChoice { get; set; }
+
+/*        IList<DataPoint> PointsCurrentChoice { get; set; }
+*/    }
 }
