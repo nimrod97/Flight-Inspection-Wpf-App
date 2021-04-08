@@ -228,7 +228,7 @@ namespace milestone1
             SetUpGraphOfCurrent();
             SetUpGraphOfRegression();
             this.currerntChoice = null;
-            this.correlatedChoice = "aileron";
+            this.correlatedChoice = null;
         }
 
         private void SetUpGraphOfCurrent()
@@ -493,7 +493,7 @@ namespace milestone1
             {
                 buildGraph(ref lastChoice, ref lastLine, ref currerntChoice, ref plotModelCurrent);
             }).Start();
-            new Thread(delegate ()
+            /* new Thread(delegate ()
             {
                 while (!isStopped)
                 {
@@ -528,7 +528,7 @@ namespace milestone1
                         }
                     }
                 }
-            }).Start();
+            }).Start();*/
         }
 
         private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice, ref PlotModel plotModel)
