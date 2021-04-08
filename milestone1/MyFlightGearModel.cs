@@ -28,7 +28,7 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
-
+        private Dictionary<string, ArrayList> dict;
         private string[] properties;
 
         public double SliderValue
@@ -195,6 +195,97 @@ namespace milestone1
             this.isPaused = false;
             this.simulatorspeed = 1.00;
             createProperties();
+
+        }
+
+        private void initializeDictionary()
+        {
+            dict = new Dictionary<string, ArrayList>();
+            int len = array.Count;
+            for (int i = 0; i < properties.Length; i++)
+            {
+                ArrayList arr=new ArrayList();
+                int j = 0;
+                while (j < len)
+                {
+                    string line = array[j].ToString();
+                    string[] data = line.Split(",");
+                    arr.Add(data[i]);
+                    j++;
+                }
+                if(dict.ContainsKey(properties[i]))
+                    dict.Add(String.Concat(properties[i],"1"), arr);
+                else
+                    dict.Add(properties[i], arr);
+            }
+        }
+
+        double avg(ArrayList x)
+        {
+            double sum = 0;
+            int size = x.Count;
+            for (int i = 0; i < size; i++)
+            {
+                sum += (float)x[i];
+            }
+            return sum / size;
+        }
+        double var(ArrayList x)
+        {
+            double sum1 = 0, avg1 = 0, avg2 = 0;
+            int size = x.Count;
+            for (int i = 0; i < size; i++)
+            {
+                sum1 += Math.Pow((double)x[i], 2);
+            }
+            avg1 = sum1 / size;
+            avg2 = avg(x);
+            return avg1 - Math.Pow((double)avg2, 2);
+        }
+
+        double cov(ArrayList x, ArrayList y)
+        {
+            double cov = 0, sum = 0;
+            int size = x.Count;
+            // getting the average of X and Y
+            double Ex = avg(x);
+            double Ey = avg(y);
+            for (int i = 0; i < size; i++)
+            {
+                sum += ((double)x[i] - Ex) * ((double)y[i] - Ey);
+            }
+            cov = sum / size;
+            return cov;
+        }
+        double pearson(ArrayList x, ArrayList y)
+        {
+            double sigmaX = Math.Sqrt((double)var(x));
+            double sigmaY = Math.Sqrt((double)var(y));
+            return cov(x, y) / (sigmaX * sigmaY);
+        }
+
+
+        string correlatedProperty(string property)
+        {
+            double maxCorrl = 0;
+            double corrl;
+            string toRet="";
+            foreach(string key in dict.Keys)
+            {
+                if (property.Equals(key))
+                    continue;
+                else
+                {
+                    corrl = Math.Abs(pearson(dict[property], dict[key]));
+                    if (corrl > maxCorrl)
+                    {
+                        maxCorrl = corrl;
+                        toRet = key;
+                    }
+
+                }
+            }
+            return toRet;
         }
 
         private void createProperties()
@@ -257,7 +348,8 @@ namespace milestone1
 
         public void start(string path)
         {
-                createLocalFile(path);
+            createLocalFile(path);
+            initializeDictionary();
                 new Thread(delegate ()
                 {
                     currentLine = 0;
@@ -270,16 +362,26 @@ namespace milestone1
                             string line = array[currentLine].ToString();
                             string[] data = line.Split(",");
                             SliderValue = getSliderValue();
-                            Aileron= (float)Convert.ToDouble(data[0]);
-                            Elevator = (float)Convert.ToDouble(data[1]);
-                            Rudder = (float)Convert.ToDouble(data[2]);
-                            Throttle = (float)Convert.ToDouble(data[6]);
-                            Altitude = (float)Convert.ToDouble(data[16]);
-                            RollDeg= (float)Convert.ToDouble(data[17]);
-                            PitchDeg=(float)Convert.ToDouble(data[18]);
-                            HeadingDeg=(float)Convert.ToDouble(data[19]);
-                            YawDeg=(float)Convert.ToDouble(data[20]);
-                            AirSpeed=(float)Convert.ToDouble(data[21]);
+                            Aileron = (float)Convert.ToDouble(dict["aileron"][currentLine]);
+                            Elevator = (float)Convert.ToDouble(dict["elevator"][currentLine]);
+                            Rudder = (float)Convert.ToDouble(dict["rudder"][currentLine]);
+                            Throttle = (float)Convert.ToDouble(dict["throttle"][currentLine]);
+                            Altitude = (float)Convert.ToDouble(dict["altitude-ft"][currentLine]);
+                            RollDeg = (float)Convert.ToDouble(dict["roll-deg"][currentLine]);
+                            PitchDeg = (float)Convert.ToDouble(dict["pitch-deg"][currentLine]);
+                            HeadingDeg = (float)Convert.ToDouble(dict["heading-deg"][currentLine]);
+                            YawDeg = (float)Convert.ToDouble(dict["side-slip-deg"][currentLine]);
+                            AirSpeed = (float)Convert.ToDouble(dict["airspeed-kt"][currentLine]);
+                            //Aileron = (float)Convert.ToDouble(data[0]);
+                            //Elevator = (float)Convert.ToDouble(data[1]);
+                            //Rudder = (float)Convert.ToDouble(data[2]);
+                            //Throttle = (float)Convert.ToDouble(data[6]);
+                            //Altitude = (float)Convert.ToDouble(data[16]);
+                            //RollDeg= (float)Convert.ToDouble(data[17]);
+                            //PitchDeg=(float)Convert.ToDouble(data[18]);
+                            //HeadingDeg=(float)Convert.ToDouble(data[19]);
+                            //YawDeg=(float)Convert.ToDouble(data[20]);
+                            //AirSpeed=(float)Convert.ToDouble(data[21]);
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);

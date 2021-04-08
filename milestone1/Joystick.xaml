@@ -126,9 +126,9 @@
                     <Ellipse
                         x:Name="KnobBase"                        
                         Canvas.Top="{Binding VM_Elevator, Mode=TwoWay,Converter={StaticResource MathMultiplyConverter},
-                        ConverterParameter=-50}"
+                        ConverterParameter=-60}"
                         Canvas.Left="{Binding VM_Aileron,Mode=TwoWay,Converter={StaticResource MathMultiplyConverter},
-                        ConverterParameter=50}"
+                        ConverterParameter=60}"
                         Width="90"
                         Height="90"
                         HorizontalAlignment="Left"
@@ -274,7 +274,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <TextBlock Margin="46,8,110,117" TextWrapping="Wrap" Text="&lt;--aileron--&gt;"/>
-        <TextBlock Margin="0,52,55,72" Text="&lt;--elevator&gt;--" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+        <TextBlock Margin="0,52,55,72" Text="&lt;--elevator--&gt;" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

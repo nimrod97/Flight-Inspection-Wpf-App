@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:milestone1"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:oxy="http://oxyplot.org/wpf"
     Title="MainWindow"
     Width="800"
     Height="600"
@@ -156,6 +156,7 @@
             <Image Source="images/goEnd.png" />
         </Button>
         <local:DataList Margin="10,115,520,156" />
+
         <Button
             Width="111"
             Height="101"
@@ -170,6 +171,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Button" />
+        
         <Button
             Width="117"
             Height="102"
@@ -192,6 +194,18 @@
             VerticalAlignment="Top"
             Content="Button" />
 
+        <Grid>
+            <oxy:Plot
+                x:Name="CurrentGraph" Title="example"
+                Margin="440,112,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" Height="100" Width="118">
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding VM_PointsCurrentChoice}"/>
+                </oxy:Plot.Series>
+            </oxy:Plot>
+        </Grid>
+        
         <local:Joystick Margin="578,10,32,362" />
         <local:FlightDataWindow Margin="578,234,24,145" />
 
