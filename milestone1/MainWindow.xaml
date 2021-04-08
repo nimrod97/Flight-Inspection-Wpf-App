@@ -173,17 +173,6 @@
             VerticalAlignment="Top"
             Content="Button" Click="Button_Click_1" />
 
-        <Grid>
-            <oxy:PlotView
-                x:Name="GraphCurrentChoice"
-                Margin="400,103,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Height="172" Width="178"
-                d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}"
-                Model="{Binding VM_PlotModel}">
-            </oxy:PlotView>
-        </Grid>
-
         <Button
             Width="246"
             Height="168"
@@ -201,7 +190,8 @@
 
         <local:Joystick Margin="578,10,32,362"/>
         <local:FlightDataWindow Margin="578,234,24,145"/>
-
+        <local:GraphCurrentChoice Margin="420,103,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Height="160" Width="160"/>
         <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
                     Minimum = "0"
                     Maximum = "5"            
