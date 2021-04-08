@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="milestone1.GraphCurrentChoice"
+﻿<UserControl x:Class="milestone1.GraphRegression"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,7 @@
         <oxy:PlotView
                 x:Name="CurrentChoice"
                 d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}"
-                Model="{Binding VM_PlotModelCurrent}">
+                Model="{Binding VM_PlotModelRegression}">
         </oxy:PlotView>
     </Grid>
 </UserControl>

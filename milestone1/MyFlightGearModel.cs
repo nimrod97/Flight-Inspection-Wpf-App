@@ -31,11 +31,11 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
-/*        private IList<DataPoint> pointsCurrentChoice;
-*/        private PlotModel plotModel;
+        private PlotModel plotModelCurrent;
+        private PlotModel plotModelRegression;
 
         private string currerntChoice;
-
+        private string correlatedChoice;
 
         private Dictionary<string, ArrayList> dict;
 
@@ -192,19 +192,6 @@ namespace milestone1
                 return properties;
             }
         }
-/*
-        public IList<DataPoint> PointsCurrentChoice
-        {
-            get
-            {
-                return pointsCurrentChoice;
-            }
-            set
-            {
-
-            }
-        }*/
-
         public string CurrerntChoice
         {
             get
@@ -217,10 +204,16 @@ namespace milestone1
             }
         }
 
-        public PlotModel PlotModel
+        public PlotModel PlotModelCurrent
         {
-            get { return plotModel; }
-            set { plotModel = value;}
+            get { return plotModelCurrent; }
+            set { plotModelCurrent = value;}
+        }
+
+        public PlotModel PlotModelRegression
+        {
+            get { return plotModelRegression; }
+            set { plotModelRegression = value; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -231,23 +224,29 @@ namespace milestone1
             this.isStopped = false;
             this.isPaused = false;
             this.simulatorspeed = 1.00;
-/*            pointsCurrentChoice = new List<DataPoint>();
-*/            createProperties();
-            SetUpModel();
+            createProperties();
+            SetUpGraphOfCurrent();
+            SetUpGraphOfRegression();
             this.currerntChoice = null;
+            this.correlatedChoice = "aileron";
         }
 
-        private void SetUpModel()
+        private void SetUpGraphOfCurrent()
         {
-            plotModel = new PlotModel();
+            plotModelCurrent = new PlotModel();
             LineSeries l = new LineSeries();
 /*            l.LineStyle = LineStyle.None;
             l.MarkerType = MarkerType.Circle;
             l.MarkerSize = 1;
             l.MarkerFill = OxyColors.Black;*/
-            plotModel.Series.Add(l);
+            plotModelCurrent.Series.Add(l);
         }
-
+        private void SetUpGraphOfRegression()
+        {
+            plotModelRegression = new PlotModel();
+            LineSeries l = new LineSeries();
+            plotModelRegression.Series.Add(l);
+        }
         private void initializeDictionary()
         {
             dict = new Dictionary<string, ArrayList>();
@@ -265,6 +264,7 @@ namespace milestone1
                 }
                 if (dict.ContainsKey(properties[i]))
                     dict.Add(String.Concat(properties[i], "1"), arr);
+
                 else
                     dict.Add(properties[i], arr);
             }
@@ -275,7 +275,7 @@ namespace milestone1
             int size = x.Count;
             for (int i = 0; i < size; i++)
             {
-                sum += (float)x[i];
+                sum += (double)x[i];
             }
             return sum / size;
         }
@@ -333,6 +333,31 @@ namespace milestone1
             return toRet;
         }
 
+        // performs a linear regression and returns the line equation
+        LineSeries linearReg(ArrayList points)
+        {
+            int size = points.Count;
+            ArrayList x = new ArrayList();
+            ArrayList y = new ArrayList();
+            for (int i = 0; i < size; i++)
+            {
+                DataPoint p1 = (DataPoint)points[i];
+                DataPoint p2 = (DataPoint)points[i];
+                x.Add((double)p1.X);
+                y.Add((double)p2.Y);
+            }
+            double a = cov(x, y);
+            double b = avg(y) - a * (avg(x));
+            LineSeries line = new LineSeries();
+            for (int i = 0; i < size; i ++)
+            {
+                double maor = (double)x[i];
+                double newY = a * i + b;
+                line.Points.Add(new DataPoint(i, newY));
+            }
+            return line;
+        }
+
         private void createProperties()
         {
             XmlDataDocument xmldoc = new XmlDataDocument();
@@ -343,9 +368,32 @@ namespace milestone1
             properties = new string[count];
             for (int i = 0; i < count; i++)
             {
-                properties[i] = xmlnode[i].SelectSingleNode("name").InnerText;
+                string name = xmlnode[i].SelectSingleNode("name").InnerText;
+                int num = numOfInstances(properties, name);
+                if (num == 0)
+                {
+                    properties[i] = name;
+                }
+                else
+                {
+                    properties[i] = String.Concat(name, num);
+                }
             }
             fs.Close();
+        }
+
+        private int numOfInstances(string[] arr, string str)
+        {
+            int count = 0;
+            int len = arr.Length;
+            for (int i = 0; i < len; i++)
+            {
+                if (arr[i] == null)
+                    break;
+                if (arr[i].Equals(str))
+                    count++;
+            }
+            return count;
         }
  
         public void connect(string ip, int port)
@@ -443,17 +491,53 @@ namespace milestone1
                 }).Start();
             new Thread(delegate ()
             {
-                buildGraph(ref lastChoice, ref lastLine, ref currerntChoice);
+                buildGraph(ref lastChoice, ref lastLine, ref currerntChoice, ref plotModelCurrent);
+            }).Start();
+            new Thread(delegate ()
+            {
+                while (!isStopped)
+                {
+                    if (currerntChoice != null && correlatedChoice != null)
+                    {
+                        if (lastChoice == null || !lastChoice.Equals(currerntChoice)) // the user changed the his the first choice
+                        {
+                            ArrayList x = dict[currerntChoice];
+                            ArrayList y = dict[correlatedChoice];
+                            ArrayList points = new ArrayList();
+                            int len = x.Count;
+                            for (int i = 0; i < len; i++)
+                            {
+                                points.Add(new DataPoint((double)Convert.ToDouble(x[i]), (double)Convert.ToDouble(y[i])));
+                            }
+                            LineSeries lineOfLinearReg = linearReg(points);
+                            if (plotModelRegression.Series[0] != null)
+                                plotModelRegression.Series.RemoveAt(0);
+                            plotModelRegression.Series.Add(lineOfLinearReg);
+
+                            LineSeries line = new();
+                            for (int i = currentLine - (currentLine % 10); i >= 0 && i >= currentLine - 30; i -= 10)
+                            {
+
+                            }
+
+                            plotModelRegression.InvalidatePlot(true);
+                        }
+                        else // the user didn't change his choice
+                        {
+
+                        }
+                    }
+                }
             }).Start();
         }
 
-        private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice)
+        private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice, ref PlotModel plotModel)
         {
             while (!isStopped)
             {
                 if (choice != null)
                 {
-                    if ((lastChoice == null || string.Compare(lastChoice, choice) == 0) && (currentLine >= lastLine))
+                    if ((lastChoice == null || lastChoice.Equals(currerntChoice)) && (currentLine >= lastLine))
                     {
                         LineSeries l = (LineSeries)(plotModel.Series[0] as LineSeries);
                         if (currentLine - lastLine > 10)
@@ -471,7 +555,7 @@ namespace milestone1
                     }
                     else
                     {
-                        plotModel.Series.Remove(plotModel.Series[0]);
+                        plotModel.Series.RemoveAt(0);
                         LineSeries l = new LineSeries();
                         buildLine(0, currentLine, l, ref lastLine, ref choice);
                         plotModel.Series.Add(l);
