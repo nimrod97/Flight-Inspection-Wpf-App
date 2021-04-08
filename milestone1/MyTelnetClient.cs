@@ -9,16 +9,23 @@ namespace milestone1
 {
     class MyTelnetClient : ITelnetClient
     {
-        Socket s;
+        TcpClient client;
+        NetworkStream stream;
+        public MyTelnetClient()
+        {
+            client = new TcpClient();
+        }
         public void connect(string ip, int port)
         {
-            this.s = new Socket(AddressFamily.InterNetwork,
-                   SocketType.Stream,
-                   ProtocolType.Tcp);
-
-            s.Connect(ip, port);
-            Console.WriteLine("Connection established");
-
+            try
+            {
+                client = new TcpClient(ip, port);
+                stream = client.GetStream();
+            }
+            catch (Exception e)
+            {
+                return;
+            }
         }
 
         public string read()
@@ -28,13 +35,16 @@ namespace milestone1
 
         public void write(string line)
         {
-            byte[] messageSent = Encoding.ASCII.GetBytes(line + "\r\n");
-            int b = s.Send(messageSent);
+            if (client != null && client.Connected)
+            {
+                byte[] messageSent = Encoding.ASCII.GetBytes(line + "\r\n");
+                stream.Write(messageSent, 0, messageSent.Length);
+            }
         }
 
         public void disconnect()
         {
-            this.s.Close();
+            client.Close();
         }
     }
 }
