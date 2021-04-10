@@ -25,51 +25,12 @@ namespace milestone1
     /// </summary>
     public partial class MainWindow : Window
     {
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern IntPtr CreateSimpleAnomalyDetector();
-
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern void simpleLearnNormal(IntPtr a, Dictionary<string,ArrayList> dict);
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-
-        //public static extern  void simpleDetect(IntPtr a, string CSVfileName);
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern int simplevectorAnomalyreportSize(IntPtr a);
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern int simplevectorCorrelatedFeaturesSize(IntPtr a);
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern IntPtr simplegetVecAnomalyReportByIndex(IntPtr a, int index);
-        //[DllImport("SimpleAnomalyDetectorDll.dll")]
-        //public static extern IntPtr simplegetVecCorrelatedFeaturesByIndex(IntPtr a, int index);
-
-
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern IntPtr CreateCircleAnomalyDetector();
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern void CircleLearnNormal(IntPtr a, string CSVfileName);
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern void CircleDetect(IntPtr a, string CSVfileName);
-
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern int circlevectorAnomalyreportSize(IntPtr a);
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern int circlevectorCorrelatedFeaturesSize(IntPtr a);
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-        //public static extern IntPtr circlegetVecAnomalyReportByIndex(IntPtr a,int index);
-        //[DllImport("CircleAnomalyDetectorDll.dll")]
-
-        //public static extern IntPtr circlegetVecCorrelatedFeaturesByIndex(IntPtr a,int index);
-
-
         private FlightGearViewModel vm;
         string learnFilePath;
         string testFilePath;
         volatile Boolean playFlag;
         volatile Boolean stopFlag;
-        //private ArrayList SimplecorrelatedFeaturesArr;
-        //private ArrayList SimpleanomalyReportArr;
-        //private ArrayList CirclecorrelatedFeaturesArr;
-        //private ArrayList CircleanomalyReportArr;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -98,56 +59,6 @@ namespace milestone1
                 //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
             }
         }
-        private void executeSimpleAnomalyDetector(string learnFile, string testFile)
-        {
-
-            //learn normal
-            //IntPtr vec = CreateSimpleAnomalyDetector();
-            //simpleLearnNormal(vec, dict);
-            //int vecSize = simplevectorCorrelatedFeaturesSize(vec);
-            //SimplecorrelatedFeaturesArr = new ArrayList(vecSize);
-            //for (int i = 0; i < vecSize; i++)
-            //{
-            //    SimplecorrelatedFeaturesArr.Add(simplegetVecCorrelatedFeaturesByIndex(vec, i));
-            //}
-
-            //// detect
-            //IntPtr vec1 = CreateSimpleAnomalyDetector();
-            //simpleDetect(vec1, testFile);
-            //int vecSize1 = simplevectorAnomalyreportSize(vec1);
-            //SimpleanomalyReportArr= new ArrayList(vecSize1);
-            //for (int i = 0; i < vecSize1; i++)
-            //{
-            //    SimpleanomalyReportArr.Add(simplegetVecAnomalyReportByIndex(vec1, i));
-            //}
-
-
-        }
-
-        private void executeCircleAnomalyDetector(string learnFile, string testFile)
-        {
-            ////learn normal
-
-            //IntPtr vec = CreateCircleAnomalyDetector();
-            //CircleLearnNormal(vec, learnFile);
-            //int vecSize = circlevectorCorrelatedFeaturesSize(vec);
-            //CirclecorrelatedFeaturesArr = new ArrayList(vecSize);
-            //for (int i = 0; i < vecSize; i++)
-            //{
-            //    CirclecorrelatedFeaturesArr.Add(circlegetVecCorrelatedFeaturesByIndex(vec, i));
-            //}
-            ////detect
-
-            //IntPtr vec1 = CreateCircleAnomalyDetector();
-            //CircleDetect(vec1, testFile);
-            //int vecSize1 = circlevectorAnomalyreportSize(vec1);
-            //CircleanomalyReportArr = new ArrayList(vecSize1);
-            //for (int i = 0; i < vecSize1; i++)
-            //{
-            //    CircleanomalyReportArr.Add(circlegetVecAnomalyReportByIndex(vec1, i));
-            //}
-        }
-
         private void play_Click(object sender, RoutedEventArgs e)
         {
             if (stopFlag)
@@ -159,6 +70,7 @@ namespace milestone1
                 playFlag = false;
                 stopFlag = false;
                 vm.VM_connect("localhost", 5400);
+                vm.VM_initializingComponentsByPath(learnFilePath);
                 vm.VM_start();
                 playFlag = true;
             }
