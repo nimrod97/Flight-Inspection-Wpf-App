@@ -480,7 +480,7 @@ namespace milestone1
                 }).Start();
             new Thread(delegate ()
             {
-                buildCurrentChoiceGraph(ref lastChoice, ref lastLine);
+                buildGraph(ref lastChoice, ref lastLine, ref currerntChoice);
             }).Start();
         }
 
@@ -559,45 +559,47 @@ namespace milestone1
             }).Start();
         }
 
-        private void buildCurrentChoiceGraph(ref string lastChoice, ref int lastLine)
+        private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice)
         {
             while (!isStopped)
             {
-                if (currerntChoice != null)
+                if (choice != null)
                 {
-                    if ((lastChoice == null || string.Compare(lastChoice, currerntChoice) == 0) && (currentLine >= lastLine))
+                    if ((lastChoice == null || string.Compare(lastChoice, choice) == 0) && (currentLine >= lastLine))
                     {
                         LineSeries l = (LineSeries)(plotModel.Series[0] as LineSeries);
                         if (currentLine - lastLine > 10)
                         {
-                            buildLine(lastLine, currentLine, l, ref lastLine);
+                            buildLine(lastLine, currentLine, l, ref lastLine, ref choice);
+                            lastChoice = choice;
                         }
                         else if (currentLine % 10 == 0 && currentLine != lastLine)
                         {
-                            l.Points.Add(new DataPoint(currentLine / 10, (float)Convert.ToDouble(dict[currerntChoice][currentLine])));
+                            l.Points.Add(new DataPoint(currentLine / 10, (float)Convert.ToDouble(dict[choice][currentLine])));
                             plotModel.InvalidatePlot(true);
                             lastLine = Math.Max(lastLine, currentLine);
+                            lastChoice = choice;
                         }
                     }
                     else
                     {
                         plotModel.Series.Remove(plotModel.Series[0]);
                         LineSeries l = new LineSeries();
-                        buildLine(0, currentLine, l, ref lastLine);
+                        buildLine(0, currentLine, l, ref lastLine, ref choice);
                         plotModel.Series.Add(l);
                         plotModel.InvalidatePlot(true);
-                        lastChoice = currerntChoice;
+                        lastChoice = choice;
                         lastLine = currentLine;
                     }
                 }
             }
         }
 
-        private void buildLine(int start, int end, LineSeries l, ref int lastLine)
+        private void buildLine(int start, int end, LineSeries l, ref int lastLine, ref string choice)
         {
             for (int i = start; i <= end; i += 10)
             {
-                l.Points.Add(new DataPoint(i / 10, (float)Convert.ToDouble(dict[currerntChoice][i])));
+                l.Points.Add(new DataPoint(i / 10, (float)Convert.ToDouble(dict[choice][i])));
                 lastLine = i;
             }
         }
