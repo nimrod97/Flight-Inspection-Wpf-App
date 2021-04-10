@@ -37,7 +37,9 @@ namespace milestone1
         void SimpleAnomalyDetector(string learnFile, string testFile);
         void CircleAnomalyDetector(string learnFile, string testFile);
 
-        PlotModel PlotModel { get; set; }
+        PlotModel PlotModelCurrent { get; set; }
+        PlotModel PlotModelRegression { get; set; }
+
         public string CurrerntChoice { get; set; }
 
 /*        IList<DataPoint> PointsCurrentChoice { get; set; }
