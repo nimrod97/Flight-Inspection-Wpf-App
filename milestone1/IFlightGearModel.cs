@@ -27,12 +27,15 @@ namespace milestone1
 
         void connect(string ip, int port);
         //void disconnect();
-        void start(string path);
+        void start();
         void moveSlider(double value);
         void pause();
         void resume();
         void stop();
         void moveSimulatorSpeed(double value);
+        void initializingComponentsByPath(string path);
+        void SimpleAnomalyDetector(string learnFile, string testFile);
+        void CircleAnomalyDetector(string learnFile, string testFile);
 
         PlotModel PlotModel { get; set; }
         public string CurrerntChoice { get; set; }

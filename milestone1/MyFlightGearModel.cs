@@ -9,9 +9,60 @@ using System.Xml;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace milestone1
 {
+
+    //class Point
+    //{
+    //    double x, y;
+    //    public Point(double x, double y) { 
+    //        this.x =x;
+    //        this.y = y;
+    //    }
+    //};
+
+    //class Line
+    //{
+
+    //    double a, b;
+    //    Line() {
+    //        a = 0;
+    //        b = 0;
+    //    }
+    //    public Line(double a, double b) {
+    //        this.a = a;
+    //        this.b = b;
+    //    }
+    //    double f(double x) { return a * x + b; }
+    //    // finding the intersection point between 2 lines
+    //    Point intersection(Line l1)
+    //    {
+    //        double x = this.a - l1.a;
+    //        double w = this.b - l1.b;
+    //        double xPoint = (w * -1) / x;
+    //        double yPoint = f(xPoint);
+    //        return new Point(xPoint, yPoint);
+    //    }
+    //};
+
+
+    public struct correlatedFeatures
+    {
+        public string feature1, feature2;
+        public double correlation;
+    };
+
+    public struct AnomalyReport
+    {
+        public int timeStep;
+        public string feature1;
+        public string feature2;
+    }
+
+
     class MyFlightGearModel : IFlightGearModel
     {
         ITelnetClient telnetClient;
@@ -31,15 +82,14 @@ namespace milestone1
         private float elevator;
         private float rudder;
         private float throttle;
-/*        private IList<DataPoint> pointsCurrentChoice;
-*/        private PlotModel plotModel;
-
+        private PlotModel plotModel;
         private string currerntChoice;
-
-
         private Dictionary<string, ArrayList> dict;
-
         private string[] properties;
+        private List<correlatedFeatures> SimpleCorrelatedFeaturesArr;
+        private List<AnomalyReport> SimpleAnomalyReportArr;
+        private List<correlatedFeatures> CircleCorrelatedFeaturesArr;
+        private List<AnomalyReport> CircleAnomalyReportArr;
 
         public double SliderValue
         {
@@ -192,18 +242,6 @@ namespace milestone1
                 return properties;
             }
         }
-/*
-        public IList<DataPoint> PointsCurrentChoice
-        {
-            get
-            {
-                return pointsCurrentChoice;
-            }
-            set
-            {
-
-            }
-        }*/
 
         public string CurrerntChoice
         {
@@ -220,7 +258,7 @@ namespace milestone1
         public PlotModel PlotModel
         {
             get { return plotModel; }
-            set { plotModel = value;}
+            set { plotModel = value; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -231,8 +269,7 @@ namespace milestone1
             this.isStopped = false;
             this.isPaused = false;
             this.simulatorspeed = 1.00;
-/*            pointsCurrentChoice = new List<DataPoint>();
-*/            createProperties();
+            createProperties();
             SetUpModel();
             this.currerntChoice = null;
         }
@@ -242,6 +279,12 @@ namespace milestone1
             plotModel = new PlotModel();
             LineSeries l = new LineSeries();
             plotModel.Series.Add(l);
+        }
+
+        public void initializingComponentsByPath(string path)
+        {
+            createLocalFile(path);
+            initializeDictionary();
         }
 
         private void initializeDictionary()
@@ -256,7 +299,7 @@ namespace milestone1
                 {
                     string line = array[j].ToString();
                     string[] data = line.Split(",");
-                    arr.Add(data[i]);
+                    arr.Add(Convert.ToDouble(data[i]));
                     j++;
                 }
                 if (dict.ContainsKey(properties[i]))
@@ -343,7 +386,7 @@ namespace milestone1
             }
             fs.Close();
         }
- 
+
         public void connect(string ip, int port)
         {
             telnetClient.connect(ip, port);
@@ -376,21 +419,19 @@ namespace milestone1
 
         public void resume()
         {
-            if(simulatorspeed!=0)
+            if (simulatorspeed != 0)
                 isPaused = false;
         }
 
         public void stop()
         {
             isStopped = true;
-            telnetClient.write(array[array.Count-1].ToString());
+            telnetClient.write(array[array.Count - 1].ToString());
             telnetClient.disconnect();
         }
 
-        public void start(string path)
+        public void start()
         {
-            createLocalFile(path);
-            initializeDictionary();
             currentLine = 0;
             string lastChoice = null;
             int lastLine = 0;
@@ -398,7 +439,7 @@ namespace milestone1
             new Thread(delegate ()
                 {
                     int len = array.Count;
-                    Boolean innerStopped=false;
+                    Boolean innerStopped = false;
                     while (!isStopped)
                     {
                         for (; currentLine < len; currentLine++)
@@ -433,17 +474,92 @@ namespace milestone1
                                 break;
                             }
                         }
-                        if (innerStopped)                           
+                        if (innerStopped)
                             break;
                     }
                 }).Start();
             new Thread(delegate ()
             {
-                builfCurrentChoiceGraph(ref lastChoice, ref lastLine);
+                buildCurrentChoiceGraph(ref lastChoice, ref lastLine);
             }).Start();
         }
 
-        private void builfCurrentChoiceGraph(ref string lastChoice, ref int lastLine)
+        public void SimpleAnomalyDetector(string learnFile, string testFile)
+        {
+            new Thread(delegate ()
+            {
+                //learn
+
+                IntPtr vec = DllSimple.CreateSimpleAnomalyDetector();
+                List<string> prop = new List<string>(dict.Keys);
+                DllSimple.SimpleLearnNormal(vec, learnFile, prop.ToArray(), prop.Count);
+                int vecSize = DllSimple.SimpleVectorCorrelatedFeaturesSize(vec);
+                correlatedFeatures cf;
+                SimpleCorrelatedFeaturesArr = new List<correlatedFeatures>(vecSize);
+                for (int i = 0; i < vecSize; i++)
+                {
+                    cf.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature1(vec, i));
+                    cf.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature2(vec, i));
+                    cf.correlation = DllSimple.getCorrelationValue(vec, i);
+                    SimpleCorrelatedFeaturesArr.Add(cf);
+
+                }
+
+                // detect
+                IntPtr vec1 = DllSimple.CreateSimpleAnomalyDetector();
+                DllSimple.SimpleDetect(vec1, testFile, prop.ToArray(), properties.Length);
+                int vecSize1 = DllSimple.SimpleVectorAnomalyReportSize(vec1);
+                AnomalyReport ar;
+                SimpleAnomalyReportArr = new List<AnomalyReport>(vecSize1);
+                for (int i = 0; i < vecSize1; i++)
+                {
+                    ar.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature1(vec1, i));
+                    ar.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature2(vec1, i));
+                    ar.timeStep = DllSimple.getTimeStep(vec1, i);
+                    SimpleAnomalyReportArr.Add(ar);
+                }
+
+            }).Start();
+
+        }
+
+        public void CircleAnomalyDetector(string learnFile, string testFile)
+        {
+            new Thread(delegate ()
+            {
+                //learn normal
+
+                IntPtr vec = DllCircle.CreateCircleAnomalyDetector();
+                List<string> prop = new List<string>(dict.Keys);
+                DllCircle.CircleLearnNormal(vec, learnFile, prop.ToArray(), prop.Count);
+                int vecSize = DllCircle.CircleVectorCorrelatedFeaturesSize(vec);
+                correlatedFeatures cf;
+                CircleCorrelatedFeaturesArr = new List<correlatedFeatures>(vecSize);
+                for (int i = 0; i < vecSize; i++)
+                {
+                    cf.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature1(vec, i));
+                    cf.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature2(vec, i));
+                    cf.correlation = DllCircle.getCorrelationValue(vec, i);
+                    CircleCorrelatedFeaturesArr.Add(cf);
+                }
+                //detect
+
+                IntPtr vec1 = DllCircle.CreateCircleAnomalyDetector();
+                DllCircle.CircleDetect(vec1, testFile, prop.ToArray(), prop.Count);
+                int vecSize1 = DllCircle.CircleVectorAnomalyReportSize(vec1);
+                AnomalyReport ar;
+                CircleAnomalyReportArr = new List<AnomalyReport>(vecSize1);
+                for (int i = 0; i < vecSize1; i++)
+                {
+                    ar.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature1(vec1, i));
+                    ar.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature2(vec1, i));
+                    ar.timeStep = DllCircle.getTimeStep(vec1, i);
+                    CircleAnomalyReportArr.Add(ar);
+                }
+            }).Start();
+        }
+
+        private void buildCurrentChoiceGraph(ref string lastChoice, ref int lastLine)
         {
             while (!isStopped)
             {
@@ -490,7 +606,7 @@ namespace milestone1
         {
             currentLine = Convert.ToInt32((value / 100.0) * array.Count);
             SliderValue = value;
-            if (isPaused&&currentLine<array.Count)
+            if (isPaused && currentLine < array.Count)
             {
                 telnetClient.write(array[currentLine].ToString());
                 Thread.Sleep(100);
@@ -520,6 +636,6 @@ namespace milestone1
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-    
+
     }
 }
