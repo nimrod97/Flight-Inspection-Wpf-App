@@ -157,6 +157,7 @@
             Style="{StaticResource roundButton}">
             <Image Source="images/goEnd.png" />
         </Button>
+
         <local:DataList x:Name="PropertiesList" Margin="10,131,520,140"/>
         
         <Button
@@ -166,6 +167,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Button" />
+
         <Button
             Width="111"
             Height="101"
@@ -193,6 +195,8 @@
         <local:FlightDataWindow Margin="578,240,24,139"/>
         <local:GraphCurrentChoice Margin="420,103,0,0" HorizontalAlignment="Left"
                 VerticalAlignment="Top" Height="160" Width="160"/>
+        <local:GraphRegression Margin="308,253,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Height="168" Width="246"/>
         <Slider d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}" x:Name = "speedSlider"
                     Minimum = "0"
                     Maximum = "5"            
