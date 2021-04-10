@@ -74,9 +74,9 @@ namespace milestone1
         }
 
 
-        public void VM_start(string path)
+        public void VM_start()
         {
-            model.start(path);
+            model.start();
         }
 
         public void VM_pause()
@@ -118,6 +118,21 @@ namespace milestone1
         public void VM_goToEnd()
         {
             VM_SliderValue = 99.5;
+        }
+
+        public void VM_initializingComponentsByPath(string path)
+        {
+            model.initializingComponentsByPath(path);
+        }
+
+        public void VM_SimpleAnomalyDetector(string learnFile, string testFile)
+        {
+            model.SimpleAnomalyDetector(learnFile,testFile);
+        }
+
+        public void VM_CircleAnomalyDetector(string learnFile, string testFile)
+        {
+            model.CircleAnomalyDetector(learnFile,testFile);
         }
 
         public float VM_Altitude

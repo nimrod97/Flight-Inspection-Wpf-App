@@ -5,6 +5,15 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject></StartupObject>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +42,19 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="attemptDll">
+      <HintPath>..\..\..\..\source\repos\attemptDll\Debug\attemptDll.dll</HintPath>
+    </Reference>
+    <Reference Include="CircleAnomalyDetectorDll">
+      <HintPath>..\..\..\..\source\repos\CircleAnomalyDetectorDll\Debug\CircleAnomalyDetectorDll.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleAnomalyDetectorDll">
+      <HintPath>..\..\..\..\source\repos\SimpleAnomalyDetectorDll\Debug\SimpleAnomalyDetectorDll.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
