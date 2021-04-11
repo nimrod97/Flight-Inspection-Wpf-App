@@ -55,18 +55,6 @@ namespace milestone1
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
         }
-/*
-        public IList<DataPoint> VM_PointsCurrentChoice
-        {
-            get
-            {
-                return this.model.PointsCurrentChoice;
-            }
-            set
-            {
-
-            }
-        }*/
 
         public void VM_connect(string ip, int port)
         {

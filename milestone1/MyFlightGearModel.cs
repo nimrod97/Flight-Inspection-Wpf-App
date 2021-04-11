@@ -53,13 +53,13 @@ namespace milestone1
     {
         public string feature1, feature2;
         public double correlation;
+        public double threshold, cx, cy;
     };
 
     public struct AnomalyReport
     {
         public int timeStep;
-        public string feature1;
-        public string feature2;
+        public string description;
     }
 
 
@@ -596,34 +596,29 @@ namespace milestone1
         {
             new Thread(delegate ()
             {
-                //learn
-
                 IntPtr vec = DllSimple.CreateSimpleAnomalyDetector();
                 List<string> prop = new List<string>(dict.Keys);
-                DllSimple.SimpleLearnNormal(vec, learnFile, prop.ToArray(), prop.Count);
-                int vecSize = DllSimple.SimpleVectorCorrelatedFeaturesSize(vec);
+                DllSimple.SimpleLearnAndDetect(vec, learnFile, testFile,prop.ToArray(), prop.Count);
+                int cfSize = DllSimple.SimpleVectorCorrelatedFeaturesSize(vec);
                 correlatedFeatures cf;
-                SimpleCorrelatedFeaturesArr = new List<correlatedFeatures>(vecSize);
-                for (int i = 0; i < vecSize; i++)
+                SimpleCorrelatedFeaturesArr = new List<correlatedFeatures>(cfSize);
+                for (int i = 0; i < cfSize; i++)
                 {
                     cf.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature1(vec, i));
                     cf.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature2(vec, i));
                     cf.correlation = DllSimple.getCorrelationValue(vec, i);
+                    cf.threshold = DllSimple.getThreshold(vec, i);
+                    cf.cx = cf.cy = 0;
                     SimpleCorrelatedFeaturesArr.Add(cf);
 
                 }
-
-                // detect
-                IntPtr vec1 = DllSimple.CreateSimpleAnomalyDetector();
-                DllSimple.SimpleDetect(vec1, testFile, prop.ToArray(), properties.Length);
-                int vecSize1 = DllSimple.SimpleVectorAnomalyReportSize(vec1);
+                int arSize = DllSimple.SimpleVectorAnomalyReportSize(vec);
                 AnomalyReport ar;
-                SimpleAnomalyReportArr = new List<AnomalyReport>(vecSize1);
-                for (int i = 0; i < vecSize1; i++)
+                SimpleAnomalyReportArr = new List<AnomalyReport>(arSize);
+                for (int i = 0; i < arSize; i++)
                 {
-                    ar.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature1(vec1, i));
-                    ar.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getFeature2(vec1, i));
-                    ar.timeStep = DllSimple.getTimeStep(vec1, i);
+                    ar.description= System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllSimple.getDescription(vec, i));
+                    ar.timeStep = DllSimple.getTimeStep(vec, i);
                     SimpleAnomalyReportArr.Add(ar);
                 }
 
@@ -635,33 +630,30 @@ namespace milestone1
         {
             new Thread(delegate ()
             {
-                //learn normal
-
                 IntPtr vec = DllCircle.CreateCircleAnomalyDetector();
                 List<string> prop = new List<string>(dict.Keys);
-                DllCircle.CircleLearnNormal(vec, learnFile, prop.ToArray(), prop.Count);
-                int vecSize = DllCircle.CircleVectorCorrelatedFeaturesSize(vec);
+                DllCircle.CircleLearnAndDetect(vec, learnFile, testFile, prop.ToArray(), prop.Count);
+                int cfSize = DllCircle.CircleVectorCorrelatedFeaturesSize(vec);
                 correlatedFeatures cf;
-                CircleCorrelatedFeaturesArr = new List<correlatedFeatures>(vecSize);
-                for (int i = 0; i < vecSize; i++)
+                CircleCorrelatedFeaturesArr = new List<correlatedFeatures>(cfSize);
+                for (int i = 0; i < cfSize; i++)
                 {
                     cf.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature1(vec, i));
                     cf.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature2(vec, i));
                     cf.correlation = DllCircle.getCorrelationValue(vec, i);
+                    cf.threshold = DllCircle.getThreshold(vec, i);
+                    cf.cx = DllCircle.getCx(vec, i);
+                    cf.cy = DllCircle.getCy(vec, i);
                     CircleCorrelatedFeaturesArr.Add(cf);
-                }
-                //detect
 
-                IntPtr vec1 = DllCircle.CreateCircleAnomalyDetector();
-                DllCircle.CircleDetect(vec1, testFile, prop.ToArray(), prop.Count);
-                int vecSize1 = DllCircle.CircleVectorAnomalyReportSize(vec1);
+                }
+                int arSize = DllCircle.CircleVectorAnomalyReportSize(vec);
                 AnomalyReport ar;
-                CircleAnomalyReportArr = new List<AnomalyReport>(vecSize1);
-                for (int i = 0; i < vecSize1; i++)
+                CircleAnomalyReportArr = new List<AnomalyReport>(arSize);
+                for (int i = 0; i < arSize; i++)
                 {
-                    ar.feature1 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature1(vec1, i));
-                    ar.feature2 = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getFeature2(vec1, i));
-                    ar.timeStep = DllCircle.getTimeStep(vec1, i);
+                    ar.description = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(DllCircle.getDescription(vec, i));
+                    ar.timeStep = DllCircle.getTimeStep(vec, i);
                     CircleAnomalyReportArr.Add(ar);
                 }
             }).Start();

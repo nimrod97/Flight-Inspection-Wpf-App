@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\App.xaml
-6-786623419
+7-149096285
 
-16170959227
+172057954357
 199892642214
-DataList.xaml;FlightDataWindow.xaml;GraphCurrentChoice.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
+DataList.xaml;FlightDataWindow.xaml;GraphCurrentChoice.xaml;GraphRegression.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
 
 True
 

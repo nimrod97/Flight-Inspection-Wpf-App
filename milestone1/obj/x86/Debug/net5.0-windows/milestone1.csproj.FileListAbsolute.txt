@@ -9,11 +9,15 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.Wpf.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\SimpleAnomalyDetectorDll.dll
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.pdb
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\SimpleAnomalyDetectorDll.pdb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Style.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.g.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.g.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.g.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.g.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.g.cs
@@ -24,6 +28,7 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.baml
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.g.resources
@@ -36,7 +41,4 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.pdb
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\SimpleAnomalyDetectorDll.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\SimpleAnomalyDetectorDll.pdb
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
