@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\
+C:\Users\barrt\Source\Repos\milestone1\milestone1\obj\Debug\net5.0-windows\
 milestone1
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\App.xaml
-6-786623419
+C:\Users\barrt\Source\Repos\milestone1\milestone1\App.xaml
+7-149096285
 
-14-1287201972
-1982052997367
-DataList.xaml;FlightDataWindow.xaml;GraphCurrentChoice.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
+172044582625
+197811495985
+DataList.xaml;FlightDataWindow.xaml;GraphCurrentChoice.xaml;GraphRegression.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
 
-False
+True
 
