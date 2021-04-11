@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace milestone1
 {
@@ -31,5 +33,13 @@ namespace milestone1
         void resume();
         void stop();
         void moveSimulatorSpeed(double value);
-    }
+
+        PlotModel PlotModelCurrent { get; set; }
+        PlotModel PlotModelRegression { get; set; }
+        PlotModel PlotModelCurrentCorrelation { get; set; }
+
+        public string CurrerntChoice { get; set; }
+
+/*        IList<DataPoint> PointsCurrentChoice { get; set; }
+*/    }
 }

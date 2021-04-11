@@ -27,26 +27,18 @@ namespace milestone1
         public DataList()
         {
             InitializeComponent();
-  /*          string [] arr = (string[]) dataListBox.ItemsSource;
-            int len = arr.Length;
-            for (int i = 0; i < len; i++)
-            {
-                dataListBox.Items.Add(arr[i]);
-            }*/
+            /*          string [] arr = (string[]) dataListBox.ItemsSource;
+                      int len = arr.Length;
+                      for (int i = 0; i < len; i++)
+                      {
+                          dataListBox.Items.Add(arr[i]);
+                      }*/
 
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-/*            System.Object[] ItemObject = new System.Object[10];
-            for (int i = 0; i <= 9; i++)
-            {
-                ItemObject[i] = "Item" + i;
-            }*/
-            /*            dataListBox.Items.Add("maor");
-                        dataListBox.EndUpdate();*/
-
-
+            (this.DataContext as FlightGearViewModel).VM_CurrerntChoice = dataListBox.SelectedItem.ToString();
         }
     }
 }

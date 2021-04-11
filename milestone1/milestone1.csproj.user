@@ -10,9 +10,15 @@
     <Compile Update="FlightDataWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GraphCurrentCorrelation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="FlightDataWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GraphCurrentCorrelation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

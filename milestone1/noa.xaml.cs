@@ -1,7 +1,4 @@
-﻿using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Annotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,40 +16,28 @@ using System.Windows.Shapes;
 namespace milestone1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for noa.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class noa : UserControl
     {
         private FlightGearViewModel vm;
         string path;
         volatile Boolean playFlag;
         volatile Boolean stopFlag;
-        public MainWindow()
+
+        public noa()
         {
             InitializeComponent();
             vm = new FlightGearViewModel(new MyFlightGearModel(new MyTelnetClient()));
             DataContext = vm;
             playFlag = false;
             stopFlag = false;
-            PropertiesList.DataContext = vm;
         }
 
-        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Create OpenFileDialog
-            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+            int val = Convert.ToInt32(e.NewValue);
 
-            // Launch OpenFileDialog by calling ShowDialog method
-            Nullable<bool> result = openFileDlg.ShowDialog();
-            // Get the selected file name and display in a TextBox.
-            // Load content of file in a TextBlock
-            if (result == true)
-            {
-                FileNameTextBox.Text = openFileDlg.FileName;
-                path = openFileDlg.FileName;
-
-                //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
-            }
         }
 
         private void play_Click(object sender, RoutedEventArgs e)
@@ -80,13 +65,6 @@ namespace milestone1
             {
                 vm.VM_resume();
             }
-
-        }
-
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            int val = Convert.ToInt32(e.NewValue);
-
         }
 
         private void pause_Click(object sender, RoutedEventArgs e)
@@ -121,15 +99,11 @@ namespace milestone1
             vm.VM_goToStart();
         }
 
-        private void FileNameTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void LabelplaySpeed_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void SimulatorSpeed_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -146,9 +120,5 @@ namespace milestone1
             SimulatorSpeed.Text = String.Format("{0:0.00}", e.NewValue);
         }
 
-        private void LabelplaySpeed_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
