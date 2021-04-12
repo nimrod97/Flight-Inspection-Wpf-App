@@ -25,6 +25,8 @@ namespace milestone1
     {
         private FlightGearViewModel vm;
         string path;
+        string learnFilePath;
+        string testFilePath;
         volatile Boolean playFlag;
         volatile Boolean stopFlag;
         public MainWindow()
@@ -150,10 +152,56 @@ namespace milestone1
         {
 
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
+
+        private void BrowseDllFile_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Launch OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = openFileDlg.ShowDialog();
+            // Get the selected file name and display in a TextBox.
+            // Load content of file in a TextBlock
+
+            if (result == true)
+            {
+                DllFileTextBox.Text = openFileDlg.FileName;
+                string dllFileName = openFileDlg.FileName;
+                if (result == true)
+                {
+                    FileNameTextBox.Text = openFileDlg.FileName;
+                    learnFilePath = openFileDlg.FileName;
+                    vm.VM_initializingComponentsByPath(learnFilePath);
+
+                    //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
+                }
+            }
+        }
+
+        private void BrowseTestFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Launch OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = openFileDlg.ShowDialog();
+            // Get the selected file name and display in a TextBox.
+            // Load content of file in a TextBlock
+            if (result == true)
+            {
+                testFilePathTextBox.Text = openFileDlg.FileName;
+                testFilePath = openFileDlg.FileName;
+
+                //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
+            }
+        }
+
+
+
     }
 }
+

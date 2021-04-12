@@ -1,11 +1,14 @@
-﻿<UserControl x:Class="milestone1.Joystick"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:milestone1"
-             mc:Ignorable="d" Height="140" Width="177">
-    <Grid d:DataContext="{d:DesignInstance Type=local:FlightGearViewModel}" Margin="0,0,-51,-34">
+﻿<UserControl
+    x:Class="milestone1.Joystick"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:milestone1"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="177"
+    Height="140"
+    mc:Ignorable="d">
+    <Grid Margin="-36,-45,-98,-86">
         <Viewbox Margin="13,38,77,52">
             <Canvas
                 x:Name="Base"
@@ -114,14 +117,20 @@
                     VerticalAlignment="Top"
                     RenderTransformOrigin="0.5,0.5">
 
-                    <Ellipse x:Name="Shadow" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="86" Fill="#52131212" Canvas.Left="22" Canvas.Top="18" />
+                    <Ellipse
+                        x:Name="Shadow"
+                        Canvas.Left="22"
+                        Canvas.Top="18"
+                        Width="86"
+                        Height="88"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Fill="#52131212" />
 
                     <Ellipse
-                        x:Name="KnobBase"                        
-                        Canvas.Top="{Binding VM_Elevator, Mode=TwoWay,Converter={StaticResource MathMultiplyConverter},
-                        ConverterParameter=-50}"
-                        Canvas.Left="{Binding VM_Aileron,Mode=TwoWay,Converter={StaticResource MathMultiplyConverter},
-                        ConverterParameter=50}"
+                        x:Name="KnobBase"
+                        Canvas.Left="{Binding VM_Aileron, Mode=TwoWay, Converter={StaticResource MathMultiplyConverter}, ConverterParameter=50}"
+                        Canvas.Top="{Binding VM_Elevator, Mode=TwoWay, Converter={StaticResource MathMultiplyConverter}, ConverterParameter=-50}"
                         Width="90"
                         Height="90"
                         HorizontalAlignment="Left"
@@ -241,42 +250,74 @@
 
                 </Canvas>
             </Canvas>
+
         </Viewbox>
-        <Slider Margin="44,129,104,12" 
-            Maximum="1" Minimum="0" Value="{Binding VM_Rudder,Mode=TwoWay}"/>
-        <TextBox HorizontalAlignment="Left" Margin="554,438,0,0" Text="rudder" TextWrapping="Wrap" VerticalAlignment="Top" Width="44"/>
-        <Slider Width="90" RenderTransformOrigin="0.5,0.5"
-                Maximum="1" Minimum="0" Value="{Binding VM_Throttle, Mode=TwoWay}" Height="28" VerticalAlignment="Top" Margin="-16,67,0,0" HorizontalAlignment="Left">
+        <TextBlock
+            Margin="89,226,136,22"
+            Text="&lt;--rudder--&gt;"
+            TextWrapping="Wrap" />
+        <Slider
+            Margin="64,240,129,6"
+            Maximum="1"
+            Minimum="0"
+            Value="{Binding VM_Rudder, Mode=TwoWay}" />
+
+        <Slider
+            Width="116"
+            Height="25"
+            Margin="-50,119,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Maximum="1"
+            Minimum="0"
+            RenderTransformOrigin="0.5,0.5"
+            Value="{Binding VM_Throttle, Mode=TwoWay}">
             <Slider.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleX="0.91" ScaleY="1.099"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
-                    <TranslateTransform/>
+                    <ScaleTransform ScaleX="0.91" ScaleY="1.099" />
+                    <SkewTransform />
+                    <RotateTransform Angle="-90" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <TextBlock TextAlignment="Center" Text="throttle" TextWrapping="Wrap" Width="88" RenderTransformOrigin="0.5,0.5" Margin="-36,70,176,86">
+
+        <TextBlock
+            Width="88"
+            Margin="-41,107,264,119"
+            RenderTransformOrigin="0.5,0.5"
+            Text="&lt;--throttle--&gt;"
+            TextAlignment="Center"
+            TextWrapping="Wrap">
             <TextBlock.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleX="0.91" ScaleY="1.099"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
+                    <ScaleTransform ScaleX="0.91" ScaleY="1.099" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock Margin="46,8,110,117" TextWrapping="Wrap" Text="&lt;--aileron--&gt;"/>
-        <TextBlock Margin="0,52,55,72" Text="&lt;--elevator&gt;--" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+        <TextBlock
+            Margin="85,14,147,230"
+            Text="&lt;--aileron--&gt;"
+            TextWrapping="Wrap" />
+        <TextBlock
+            Margin="0,105,59,115"
+            HorizontalAlignment="Right"
+            RenderTransformOrigin="0.5,0.5"
+            Text="&lt;--elevator--&gt;"
+            TextWrapping="Wrap">
             <TextBlock.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
 
     </Grid>
+
 </UserControl>
