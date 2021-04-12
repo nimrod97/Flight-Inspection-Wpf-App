@@ -12,22 +12,11 @@ namespace milestone1
     class FlightGearViewModel : INotifyPropertyChanged
     {
         private IFlightGearModel model;
-        public PlotModel VM_PlotModelCurrent
+        public PlotModel VM_PlotModel
         {
-            get { return model.PlotModelCurrent; }
-            set { model.PlotModelCurrent = value; NotifyPropertyChanged("PlotModel"); }
+            get { return model.PlotModel; }
+            set { model.PlotModel = value; NotifyPropertyChanged("PlotModel"); }
         }
-        public PlotModel VM_PlotModelRegression
-        {
-            get { return model.PlotModelRegression; }
-            set { model.PlotModelRegression = value; NotifyPropertyChanged("PlotModel"); }
-        }
-        public PlotModel VM_PlotModelCurrentCorrelation
-        {
-            get { return model.PlotModelCurrentCorrelation; }
-            set { model.PlotModelCurrentCorrelation = value; NotifyPropertyChanged("PlotModel"); }
-        }
-
 
         public double VM_SliderValue
         {

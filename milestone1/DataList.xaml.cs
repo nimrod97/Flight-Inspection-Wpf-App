@@ -38,7 +38,15 @@ namespace milestone1
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (this.DataContext as FlightGearViewModel).VM_CurrerntChoice = dataListBox.SelectedItem.ToString();
+            /*            System.Object[] ItemObject = new System.Object[10];
+                        for (int i = 0; i <= 9; i++)
+                        {
+                            ItemObject[i] = "Item" + i;
+                        }*/
+            /*            dataListBox.Items.Add("maor");
+                        dataListBox.EndUpdate();*/
+            string s = dataListBox.SelectedItem.ToString();
+            (this.DataContext as FlightGearViewModel).VM_CurrerntChoice = s;
         }
     }
 }

@@ -11,7 +11,7 @@
         <oxy:PlotView
                 x:Name="CurrentChoice"
                 d:DataContext="{d:DesignInstance Type={x:Type local:FlightGearViewModel}}"
-                Model="{Binding VM_PlotModelCurrent}">
+                Model="{Binding VM_PlotModel}">
         </oxy:PlotView>
     </Grid>
 </UserControl>
