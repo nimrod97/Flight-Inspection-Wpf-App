@@ -22,6 +22,13 @@ namespace milestone1
             get { return model.PlotModelRegression; }
             set { model.PlotModelRegression = value; NotifyPropertyChanged("PlotModel"); }
         }
+        public PlotModel VM_PlotModelCurrentCorrelation
+        {
+            get { return model.PlotModelCurrentCorrelation; }
+            set { model.PlotModelCurrentCorrelation = value; NotifyPropertyChanged("PlotModel"); }
+        }
+
+
         public double VM_SliderValue
         {
             get
@@ -120,62 +127,62 @@ namespace milestone1
             VM_SliderValue = 99.5;
         }
 
-        public float VM_Altitude
+        public double VM_Altitude
         {
             get { return model.Altitude; }
             set {; }
         }
 
-        public float VM_AirSpeed
+        public double VM_AirSpeed
         {
             get { return model.AirSpeed; }
             set {; }
 
         }
 
-        public float VM_HeadingDeg
+        public double VM_HeadingDeg
         {
             get { return model.HeadingDeg; }
             set {; }
 
         }
 
-        public float VM_PitchDeg
+        public double VM_PitchDeg
         {
             get { return model.PitchDeg; }
             set {; }
 
         }
 
-        public float VM_RollDeg
+        public double VM_RollDeg
         {
             get { return model.RollDeg; }
             set {; }
 
         }
 
-        public float VM_YawDeg
+        public double VM_YawDeg
         {
             get { return model.YawDeg; }
             set {; }
 
         }
-        public float VM_Aileron
+        public double VM_Aileron
         {
             get { return model.Aileron; }
             set {; }
         }
-        public float VM_Elevator
+        public double VM_Elevator
         {
             get { return model.Elevator; }
             set {; }
         }
-        public float VM_Rudder
+        public double VM_Rudder
         {
             get { return model.Rudder; }
             set {; }
         }
-        public float VM_Throttle
+        public double VM_Throttle
         {
             get { return model.Throttle; }
             set {; }

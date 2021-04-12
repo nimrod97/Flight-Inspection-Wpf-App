@@ -21,19 +21,19 @@ namespace milestone1
         private int currentLine;
         private double sliderValue;
         private double simulatorspeed;
-        private float altitude;
-        private float airSpeed;
-        private float headingDeg;
-        private float pitchDeg;
-        private float rollDeg;
-        private float yawDeg;
-        private float aileron;
-        private float elevator;
-        private float rudder;
-        private float throttle;
+        private double altitude;
+        private double airSpeed;
+        private double headingDeg;
+        private double pitchDeg;
+        private double rollDeg;
+        private double yawDeg;
+        private double aileron;
+        private double elevator;
+        private double rudder;
+        private double throttle;
         private PlotModel plotModelCurrent;
         private PlotModel plotModelRegression;
-
+        private PlotModel plotModelCurrentCorrelation;
         private string currerntChoice;
         private string correlatedChoice;
 
@@ -64,7 +64,7 @@ namespace milestone1
                 simulatorspeed = value;
             }
         }
-        public float Altitude
+        public double Altitude
         {
             get
             {
@@ -76,7 +76,7 @@ namespace milestone1
                 NotifyPropertyChanged("Altitude");
             }
         }
-        public float AirSpeed
+        public double AirSpeed
         {
             get
             {
@@ -88,7 +88,7 @@ namespace milestone1
                 NotifyPropertyChanged("AirSpeed");
             }
         }
-        public float HeadingDeg
+        public double HeadingDeg
         {
             get
             {
@@ -100,7 +100,7 @@ namespace milestone1
                 NotifyPropertyChanged("HeadingDeg");
             }
         }
-        public float PitchDeg
+        public double PitchDeg
         {
             get
             {
@@ -112,7 +112,7 @@ namespace milestone1
                 NotifyPropertyChanged("PitchDeg");
             }
         }
-        public float RollDeg
+        public double RollDeg
         {
             get
             {
@@ -124,7 +124,7 @@ namespace milestone1
                 NotifyPropertyChanged("RollDeg");
             }
         }
-        public float YawDeg
+        public double YawDeg
         {
             get
             {
@@ -136,7 +136,7 @@ namespace milestone1
                 NotifyPropertyChanged("YawDeg");
             }
         }
-        public float Aileron
+        public double Aileron
         {
             get
             {
@@ -148,7 +148,7 @@ namespace milestone1
                 NotifyPropertyChanged("Aileron");
             }
         }
-        public float Elevator
+        public double Elevator
         {
             get
             {
@@ -160,7 +160,7 @@ namespace milestone1
                 NotifyPropertyChanged("Elevator");
             }
         }
-        public float Rudder
+        public double Rudder
         {
             get
             {
@@ -172,7 +172,7 @@ namespace milestone1
                 NotifyPropertyChanged("Rudder");
             }
         }
-        public float Throttle
+        public double Throttle
         {
             get
             {
@@ -216,6 +216,13 @@ namespace milestone1
             set { plotModelRegression = value; }
         }
 
+        
+        public PlotModel PlotModelCurrentCorrelation
+        {
+            get { return plotModelCurrentCorrelation; }
+            set { plotModelCurrentCorrelation = value; }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MyFlightGearModel(ITelnetClient telnetClient)
@@ -226,36 +233,53 @@ namespace milestone1
             this.simulatorspeed = 1.00;
             createProperties();
             SetUpGraphOfCurrent();
+            SetUpGraphOfCorrelated();
             SetUpGraphOfRegression();
             this.currerntChoice = null;
-            this.correlatedChoice = "aileron";
+            this.correlatedChoice = null;
         }
 
         private void SetUpGraphOfCurrent()
         {
             plotModelCurrent = new PlotModel();
             plotModelCurrent.TitleFontSize = 14;
-            plotModelCurrent.Title = "Current Choice";
             TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, Title = "Time" };
             plotModelCurrent.Axes.Add(timeAxis);
-            var valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
             plotModelCurrent.Axes.Add(valueAxis);
-            LineSeries l = new LineSeries();
+            //LineSeries l = new LineSeries();
 /*            l.LineStyle = LineStyle.None;
             l.MarkerType = MarkerType.Circle;
             l.MarkerSize = 1;
             l.MarkerFill = OxyColors.Black;*/
-            plotModelCurrent.Series.Add(l);
+            //plotModelCurrent.Series.Add(l);
         }
+
+        private void SetUpGraphOfCorrelated()
+        {
+            plotModelCurrentCorrelation = new PlotModel();
+            plotModelCurrentCorrelation.TitleFontSize = 14;
+            TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, Title = "Time" };
+            plotModelCurrentCorrelation.Axes.Add(timeAxis);
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
+            plotModelCurrentCorrelation.Axes.Add(valueAxis);
+           // LineSeries l = new LineSeries();
+            /*            l.LineStyle = LineStyle.None;
+                        l.MarkerType = MarkerType.Circle;
+                        l.MarkerSize = 1;
+                        l.MarkerFill = OxyColors.Black;*/
+           // plotModelCurrentCorrelation.Series.Add(l);
+        }
+
         private void SetUpGraphOfRegression()
         {
             plotModelRegression = new PlotModel();
-            plotModelRegression.TitleFontSize = 14;
-            plotModelRegression.Title = "Linear Regression";
-            LinearAxis buttomAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom };
-            plotModelRegression.Axes.Add(buttomAxis);
-            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot , Position = AxisPosition.Left};
-            plotModelRegression.Axes.Add(valueAxis);
+            LineSeries l = new LineSeries();
+            plotModelRegression.Series.Add(l);
+            LinearAxis xAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10};
+            plotModelCurrentCorrelation.Axes.Add(xAxis);
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
+            plotModelCurrentCorrelation.Axes.Add(valueAxis);
         }
         private void initializeDictionary()
         {
@@ -269,7 +293,7 @@ namespace milestone1
                 {
                     string line = array[j].ToString();
                     string[] data = line.Split(",");
-                    arr.Add(data[i]);
+                    arr.Add(Convert.ToDouble(data[i]));
                     j++;
                 }
                 if (dict.ContainsKey(properties[i]))
@@ -342,7 +366,6 @@ namespace milestone1
             }
             return toRet;
         }
-
         // performs a linear regression and returns the line equation
         Func<double, double> linearReg(ArrayList points)
         {
@@ -359,13 +382,13 @@ namespace milestone1
             double a = cov(x, y) / var(x);
             double b = avg(y) - a * avg(x);
             Func<double, double> func = x => a * x + b;
-/*            LineSeries line = new LineSeries();
-            for (int i = 0; i < size; i++)
-            {
-                double maor = (double)x[i];
-                double newY = a * i + b;
-                line.Points.Add(new DataPoint(i, newY));
-            }*/
+            /*            LineSeries line = new LineSeries();
+                        for (int i = 0; i < size; i++)
+                        {
+                            double maor = (double)x[i];
+                            double newY = a * i + b;
+                            line.Points.Add(new DataPoint(i, newY));
+                        }*/
             return func;
         }
 
@@ -462,6 +485,7 @@ namespace milestone1
                 {
                     int len = array.Count;
                     Boolean innerStopped=false;
+                    //FunctionSeries fs = new();
                     while (!isStopped)
                     {
                         for (; currentLine < len; currentLine++)
@@ -470,17 +494,20 @@ namespace milestone1
                             string[] data = line.Split(",");
                             SliderValue = getSliderValue();
 
-                            Aileron = (float)Convert.ToDouble(dict["aileron"][currentLine]);
-                            Elevator = (float)Convert.ToDouble(dict["elevator"][currentLine]);
-                            Rudder = (float)Convert.ToDouble(dict["rudder"][currentLine]);
-                            Throttle = (float)Convert.ToDouble(dict["throttle"][currentLine]);
-                            Altitude = (float)Convert.ToDouble(dict["altitude-ft"][currentLine]);
-                            RollDeg = (float)Convert.ToDouble(dict["roll-deg"][currentLine]);
-                            PitchDeg = (float)Convert.ToDouble(dict["pitch-deg"][currentLine]);
-                            HeadingDeg = (float)Convert.ToDouble(dict["heading-deg"][currentLine]);
-                            YawDeg = (float)Convert.ToDouble(dict["side-slip-deg"][currentLine]);
-                            AirSpeed = (float)Convert.ToDouble(dict["airspeed-kt"][currentLine]);
-
+                            Aileron = (double)dict["aileron"][currentLine];
+                            Elevator = (double)dict["elevator"][currentLine];
+                            Rudder = (double)dict["rudder"][currentLine];
+                            Throttle = (double)dict["throttle"][currentLine];
+                            Altitude = (double)dict["altitude-ft"][currentLine];
+                            RollDeg = (double)dict["roll-deg"][currentLine];
+                            PitchDeg = (double)dict["pitch-deg"][currentLine];
+                            HeadingDeg = (double)dict["heading-deg"][currentLine];
+                            YawDeg = (double)dict["side-slip-deg"][currentLine];
+                            AirSpeed = (double)dict["airspeed-kt"][currentLine];
+                            if (currerntChoice != null && currentLine % 10 == 0)
+                            {
+                                buildAlldGraphs(len, ref lastChoice, ref lastLine);
+                            }
                             if (!isPaused && !isStopped)
                             {
                                 telnetClient.write(line);
@@ -488,7 +515,13 @@ namespace milestone1
                             }
                             else if (isPaused)
                             {
-                                while (isPaused) { }
+                                while (isPaused)
+                                {
+                                    if (currerntChoice != null && (!currerntChoice.Equals(lastChoice) || !currentLine.Equals(lastLine)))
+                                    {
+                                        buildAlldGraphs(len, ref lastChoice, ref lastLine);
+                                    }
+                                }
                             }
                             else // if (isStopped)
                             {
@@ -496,229 +529,132 @@ namespace milestone1
                                 break;
                             }
                         }
-                        if (innerStopped)                           
+                        if (innerStopped)
                             break;
+                        if (currerntChoice != null && !currerntChoice.Equals(lastChoice))
+                        {
+                            buildAlldGraphs(len, ref lastChoice, ref lastLine);
+                        }
                     }
                 }).Start();
-            new Thread(delegate ()
-            {
-                buildGraph(ref lastChoice, ref lastLine, ref currerntChoice, ref plotModelCurrent);
-            }).Start();
-            new Thread(delegate ()
-            {
-                FunctionSeries fs = new();
-                while (!isStopped)
-                {
-                    if (currerntChoice != null && correlatedChoice != null)
-                    {
-                        if (lastChoice == null || !lastChoice.Equals(currerntChoice)) // the user changed the his the first choice
-                        {
-                            ArrayList x = dict[currerntChoice];
-                            ArrayList y = dict[correlatedChoice];
-                            ArrayList points = new ArrayList();
-                            int len = x.Count;
-                            double maxX = 0, minX = 0;
-
-                            for (int i = 0; i < len; i++)
-                            {
-                                double currentX = (double)Convert.ToDouble(x[i]);
-                                double currentY = (double)Convert.ToDouble(y[i]);
-                                maxX = Math.Max(maxX, currentX);
-                                minX = Math.Min(minX, currentX);
-                                DataPoint p = new DataPoint(currentX, currentY);
-                                points.Add(p);
-                            }
-
-                            Func<double, double> func = linearReg(points);
-                            fs = new FunctionSeries(func, minX -10, maxX + 10, len, null);
-
-                          //  if (plotModelRegression.Series.Count != 0)
-                            plotModelRegression.Series.Clear();
-                      //          plotModelRegression.Series.RemoveAt(0);
-/*                            plotModelRegression.Series.Add(fs);
-                            plotModelRegression.Series.Add(line);
-                            plotModelRegression.InvalidatePlot(true);*/
-                        }
-                        if (!isPaused && currentLine % 10 == 0)
-                        {
-                            ScatterSeries scatter = new()
-                            {
-                                MarkerType = MarkerType.Circle,
-                                MarkerStrokeThickness = 0
-                            };
-                            
-/*                            LineSeries line = new();
-                            line.LineStyle = LineStyle.None;
-                            line.MarkerType = MarkerType.Circle;
-                            line.MarkerSize = 2;
-                            line.MarkerFill = OxyColors.Black;*/
-                            int startLoop = currentLine - (currentLine % 10);
-                            int endLoop = Math.Max(0, currentLine - 300);
-                            for (int i = startLoop; i >= endLoop; i -= 10)
-                            {
-                                double x = (double)Convert.ToDouble(dict[currerntChoice][i]);
-                                double y = (double)Convert.ToDouble(dict[correlatedChoice][i]);
-                                /*line.Points.Add(new DataPoint(x, y));*/
-                                scatter.Points.Add(new ScatterPoint(x, y));
-                            }
-                            //   if (plotModelRegression.Series.Count > 1)
-                            //       plotModelRegression.Series.RemoveAt(1);
-                            plotModelRegression.Series.Clear();
-                            //plotModelRegression.Series.Add(fs);
-                            plotModelRegression.Series.Add(scatter);
-                            plotModelRegression.InvalidatePlot(true);
-                        }
-                    }
-                }
-            }).Start();
         }
 
-
-
-
-
-
-
-     /*   public void start(string path)
+        private void buildAlldGraphs(int len, ref string lastChoice, ref int lastLine)
         {
-            createLocalFile(path);
-            initializeDictionary();
-            currentLine = 0;
-            string lastChoice = null;
-            int lastLine = 0;
-            new Thread(delegate ()
+            // build current Graph
+            correlatedChoice = correlatedProperty(currerntChoice);
+            LineSeries l = new LineSeries();
+            for (int i = 0; i <= currentLine - 10; i += 10)
             {
-                int len = array.Count;
-                Boolean innerStopped = false;
-                while (!isStopped)
+                l.Points.Add(new DataPoint(i, (double)dict[currerntChoice][i]));
+            }
+            plotModelCurrent.Series.Clear();
+            plotModelCurrent.Series.Add(l);
+            plotModelCurrent.Title = currerntChoice;
+            plotModelCurrent.InvalidatePlot(true);
+            
+            if (!correlatedChoice.Equals(""))
+            {
+                // build correlatedChoice
+                LineSeries line = new LineSeries();
+                for (int i = 0; i <= currentLine - 10; i += 10)
                 {
-                    for (; currentLine < len; currentLine++)
-                    {
-                        string line = array[currentLine].ToString();
-                        string[] data = line.Split(",");
-                        SliderValue = getSliderValue();
-
-                        Aileron = (float)Convert.ToDouble(dict["aileron"][currentLine]);
-                        Elevator = (float)Convert.ToDouble(dict["elevator"][currentLine]);
-                        Rudder = (float)Convert.ToDouble(dict["rudder"][currentLine]);
-                        Throttle = (float)Convert.ToDouble(dict["throttle"][currentLine]);
-                        Altitude = (float)Convert.ToDouble(dict["altitude-ft"][currentLine]);
-                        RollDeg = (float)Convert.ToDouble(dict["roll-deg"][currentLine]);
-                        PitchDeg = (float)Convert.ToDouble(dict["pitch-deg"][currentLine]);
-                        HeadingDeg = (float)Convert.ToDouble(dict["heading-deg"][currentLine]);
-                        YawDeg = (float)Convert.ToDouble(dict["side-slip-deg"][currentLine]);
-                        AirSpeed = (float)Convert.ToDouble(dict["airspeed-kt"][currentLine]);
-
-                        if (!isPaused && !isStopped)
-                        {
-                            telnetClient.write(line);
-                            Thread.Sleep((int)(100.0 / SimulatorSpeed));
-                        }
-                        else if (isPaused)
-                        {
-                            while (isPaused) { }
-                        }
-                        else // if (isStopped)
-                        {
-                            innerStopped = true;
-                            break;
-                        }
-
-                        if (currerntChoice != null)
-                        {
-                            if ((lastChoice == null || lastChoice.Equals(currerntChoice)) && (currentLine >= lastLine))
-                            {
-                                LineSeries l = (LineSeries)(plotModelCurrent.Series[0] as LineSeries);
-                                if (currentLine - lastLine > 10)
-                                {
-                                    buildLine(lastLine, currentLine, l, ref lastLine, ref currerntChoice);
-                                    lastChoice = currerntChoice;
-                                }
-                                else if (currentLine % 10 == 0 && currentLine != lastLine)
-                                {
-                                    l.Points.Add(new DataPoint(currentLine / 10, (double)Convert.ToDouble(dict[currerntChoice][currentLine])));
-                                    plotModelCurrent.InvalidatePlot(true);
-                                    lastLine = Math.Max(lastLine, currentLine);
-                                    lastChoice = currerntChoice;
-                                }
-                            }
-                            else
-                            {
-                                plotModelCurrent.Series.RemoveAt(0);
-                                LineSeries l = new LineSeries();
-                                buildLine(0, currentLine, l, ref lastLine, ref currerntChoice);
-                                plotModelCurrent.Series.Add(l);
-                                plotModelCurrent.InvalidatePlot(true);
-                                lastChoice = currerntChoice;
-                                lastLine = currentLine;
-                            }
-                        }
-
-                        if (currerntChoice != null && correlatedChoice != null)
-                        {
-                        //    if (lastChoice == null || !lastChoice.Equals(currerntChoice)) // the user changed the his the first choice
-                        //    {
-                                ArrayList x = dict[currerntChoice];
-                                ArrayList y = dict[correlatedChoice];
-                                ArrayList points = new ArrayList();
-                                int len2 = x.Count;
-                                double maxX = 0, minX = 0;
-                                for (int i = 0; i < len2; i++)
-                                {
-                                    double currentX = (double)Convert.ToDouble(x[i]);
-                                    maxX = Math.Max(maxX, currentX);
-                                    minX = Math.Min(minX, currentX);
-                                    DataPoint p = new DataPoint(currentX, (double)Convert.ToDouble(y[i]));
-                                    points.Add(p);
-                                }
-
-                                Func<double, double> func = linearReg(points);
-                                FunctionSeries fs = new FunctionSeries(func, minX - 10, maxX + 10, len2, null);
-
-                                if (plotModelRegression.Series[0] != null)
-                                    plotModelRegression.Series.RemoveAt(0);
-                                plotModelRegression.Series.Add(fs);
-                                plotModelRegression.InvalidatePlot(true);
-                        //    }
-                            if (!isPaused && currentLine % 10 == 0)
-                            {
-                                LineSeries line2 = new();
-                                line2.LineStyle = LineStyle.None;
-                                line2.MarkerType = MarkerType.Circle;
-                                line2.MarkerSize = 2;
-                                line2.MarkerFill = OxyColors.Black;
-
-                                int startLoop = currentLine - (currentLine % 10);
-                                int endLoop = Math.Max(0, currentLine - 300);
-                                for (int i = startLoop; i >= endLoop; i -= 10)
-                                {
-                                    double px = (double)Convert.ToDouble(dict[currerntChoice][i]);
-                                    double py = (double)Convert.ToDouble(dict[correlatedChoice][i]);
-                                    line2.Points.Add(new DataPoint(px, py));
-                                }
-                                if (plotModelRegression.Series.Count > 1)
-                                    plotModelRegression.Series.RemoveAt(1);
-                                plotModelRegression.Series.Add(line2);
-                                plotModelRegression.InvalidatePlot(true);
-                            }
-                        }
-
-                    }
-                    if (innerStopped)
-                        break;
-
+                    line.Points.Add(new DataPoint(i, (double)dict[correlatedChoice][i]));
                 }
-            }).Start();
+                plotModelCurrentCorrelation.Series.Clear();
+                plotModelCurrentCorrelation.Series.Add(line);
+                plotModelCurrentCorrelation.Title = correlatedChoice;
+                plotModelCurrentCorrelation.InvalidatePlot(true);
+            
+                // build linearReg
+                ArrayList x = dict[currerntChoice];
+                ArrayList y = dict[correlatedChoice];
+                ArrayList points = new ArrayList();
+                double maxX = 0, minX = 0;
+
+                for (int i = 0; i < len; i++)
+                {
+                    double currentX = (double)x[i];
+                    double currentY = (double)y[i];
+                    maxX = Math.Max(maxX, currentX);
+                    minX = Math.Min(minX, currentX);
+                    DataPoint p = new DataPoint(currentX, currentY);
+                    points.Add(p);
+                }
+
+                Func<double, double> func = linearReg(points);
+                FunctionSeries fs = new FunctionSeries(func, minX, maxX, len, null);
+                LineSeries lineOfLastSeconds = new();
+                lineOfLastSeconds.LineStyle = LineStyle.None;
+                lineOfLastSeconds.MarkerType = MarkerType.Circle;
+                lineOfLastSeconds.MarkerSize = 2;
+                lineOfLastSeconds.MarkerFill = OxyColors.Black;
+                int start = Math.Max(0, currentLine - 300);
+                int end = currentLine;
+                for (int i = start; i < end; i++)
+                {
+                    lineOfLastSeconds.Points.Add(new DataPoint((double)dict[currerntChoice][i], (double)dict[correlatedChoice][i]));
+                }
+                plotModelRegression.Series.Clear();
+                plotModelRegression.Series.Add(fs);
+                plotModelRegression.Series.Add(lineOfLastSeconds);
+                plotModelRegression.InvalidatePlot(true);
+            }
+            else
+            {
+                plotModelCurrentCorrelation.Series.Clear();
+                plotModelRegression.Series.Clear();
+                plotModelCurrentCorrelation.Title = "No correlated feature";
+
+            }
+            plotModelCurrentCorrelation.InvalidatePlot(true);
+            plotModelRegression.InvalidatePlot(true);
+            lastLine = currentLine;
+            lastChoice = currerntChoice;
+        }
+
+        private void buildLine(int start, int end, LineSeries l, ArrayList px, ArrayList py, int step)
+        {
+            for (int i = start; i <= end; i += step)
+            {
+                l.Points.Add(new DataPoint((double)px[i], (double)py[i]));
+            }
+        }
+
+      /*  private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice, ref PlotModel plotModel)
+        {
+            if (choice != null)
+            {
+                plotModel.Series.Clear();
+                LineSeries l = new LineSeries();
+                int temp = currentLine;
+                for (int i = 0; i <= temp - 10; i += 10)
+                {
+                    l.Points.Add(new DataPoint(i / 10, (double)dict[choice][i]));
+                }
+                plotModel.Series.Add(l);
+                plotModel.InvalidatePlot(true);
+                //  Thread.Sleep(100);
+                /*                if ((lastChoice == null || lastChoice.Equals(currerntChoice)) && (currentLine >= lastLine))
+                                {
+                                    LineSeries l = (LineSeries)(plotModel.Series[0] as LineSeries);
+                                    if (currentLine - lastLine > 10)
+                                    {
+                                        buildLine(lastLine, currentLine, l, ref lastLine, ref choice);
+                                        lastChoice = currerntChoice;
+                                    }
+                                    else if (currentLine % 10 == 0 && currentLine != lastLine)
+                                    {
+                                        l.Points.Add(new DataPoint(currentLine / 10, (float)Convert.ToDouble(dict[choice][currentLine])));
+                                        plotModel.InvalidatePlot(true);
+                                        lastLine = Math.Max(lastLine, currentLine);
+                                        lastChoice = currerntChoice;
+                                    }
+                                    
+            }
         }*/
 
-
-
-
-
-
-
-
-        private void buildGraph(ref string lastChoice, ref int lastLine, ref string choice, ref PlotModel plotModel)
+        /*private void buildGraphCorrelation(ref string lastChoice, ref int lastLine, ref string choice, ref PlotModel plotModel)
         {
             while (!isStopped)
             {
@@ -734,10 +670,9 @@ namespace milestone1
                         }
                         else if (currentLine % 10 == 0 && currentLine != lastLine)
                         {
-                            l.Points.Add(new DataPoint(currentLine / 10, (double)Convert.ToDouble(dict[choice][currentLine])));
+                            l.Points.Add(new DataPoint(currentLine / 10, (float)Convert.ToDouble(dict[choice][currentLine])));
                             plotModel.InvalidatePlot(true);
                             lastLine = Math.Max(lastLine, currentLine);
-                            lastChoice = choice;
                         }
                     }
                     else
@@ -747,21 +682,11 @@ namespace milestone1
                         buildLine(0, currentLine, l, ref lastLine, ref choice);
                         plotModel.Series.Add(l);
                         plotModel.InvalidatePlot(true);
-                        lastChoice = choice;
                         lastLine = currentLine;
                     }
                 }
             }
-        }
-
-        private void buildLine(int start, int end, LineSeries l, ref int lastLine, ref string choice)
-        {
-            for (int i = start; i <= end; i += 10)
-            {
-                l.Points.Add(new DataPoint(i / 10, (float)Convert.ToDouble(dict[choice][i])));
-                lastLine = i;
-            }
-        }
+        }*/
 
         public void moveSlider(double value)
         {
