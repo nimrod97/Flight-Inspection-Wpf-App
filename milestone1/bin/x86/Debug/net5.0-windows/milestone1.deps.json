@@ -11,7 +11,7 @@
           "MaterialDesignThemes": "4.0.0",
           "OxyPlot.Wpf": "2.0.0",
           "CircleAnomalyDetectorDll": "0.0.0.0",
-          "SimpleAnomalyDetectorDll": "0.0.0.0"
+          "DllCircleWpf": "1.0.0.0"
         },
         "runtime": {
           "milestone1.dll": {}
@@ -732,11 +732,11 @@
           }
         }
       },
-      "SimpleAnomalyDetectorDll/0.0.0.0": {
+      "DllCircleWpf/1.0.0.0": {
         "runtime": {
-          "SimpleAnomalyDetectorDll.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
+          "DllCircleWpf.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -1292,7 +1292,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SimpleAnomalyDetectorDll/0.0.0.0": {
+    "DllCircleWpf/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

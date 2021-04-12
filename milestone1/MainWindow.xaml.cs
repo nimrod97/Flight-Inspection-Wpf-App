@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections;
+using System.Reflection;
 
 namespace milestone1
 {
@@ -55,8 +56,6 @@ namespace milestone1
                 FileNameTextBox.Text = openFileDlg.FileName;
                 learnFilePath = openFileDlg.FileName;
                 vm.VM_initializingComponentsByPath(learnFilePath);
-
-                //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
             }
         }
         private void play_Click(object sender, RoutedEventArgs e)
@@ -170,21 +169,22 @@ namespace milestone1
             Nullable<bool> result = openFileDlg.ShowDialog();
             // Get the selected file name and display in a TextBox.
             // Load content of file in a TextBlock
-            
+
             if (result == true)
             {
                 DllFileTextBox.Text = openFileDlg.FileName;
                 string dllFileName = openFileDlg.FileName;
-                if (dllFileName.EndsWith("SimpleAnomalyDetectorDll.dll"))
-                {
-                    vm.VM_SimpleAnomalyDetector(learnFilePath, testFilePath);
-                }
-                else // ends with CircleAnomalyDetectorDll.dll
-                {
-                    vm.VM_CircleAnomalyDetector(learnFilePath, testFilePath);
-                }
+                var assembly = Assembly.LoadFile(dllFileName);
+                vm.VM_sendAssembly(assembly, learnFilePath, testFilePath);
+                //if (assembly.ManifestModule.FullyQualifiedName.EndsWith("SimpleAnomalyDetectorDll.dll")) 
+                //{
+                //    vm.VM_SimpleAnomalyDetector(learnFilePath, testFilePath);
+                //}
+                //else // ends with CircleAnomalyDetectorDll.dll
+                //{
+                //    vm.VM_CircleAnomalyDetector(learnFilePath, testFilePath);
+                //}
 
-                //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
             }
         }
 
@@ -202,14 +202,13 @@ namespace milestone1
                 testFilePathTextBox.Text = openFileDlg.FileName;
                 testFilePath = openFileDlg.FileName;
 
-                //TextBlock1.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
             }
         }
 
 
     }
-    
+
 }
 
-    
+
 

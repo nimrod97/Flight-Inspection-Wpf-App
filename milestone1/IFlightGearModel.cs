@@ -4,21 +4,22 @@ using System.Text;
 using System.ComponentModel;
 using OxyPlot;
 using OxyPlot.Series;
+using System.Reflection;
 
 namespace milestone1
 {
     interface IFlightGearModel: INotifyPropertyChanged
     {
-        float Altitude { set; get; }
-        float AirSpeed { set; get; }
-        float HeadingDeg { set; get; }
-        float PitchDeg { set; get; }
-        float RollDeg { set; get; }
-        float YawDeg { set; get; }
-        float Aileron { set; get; }
-        float Elevator { set; get; }
-        float Rudder { set; get; }
-        float Throttle { set; get; }
+        double Altitude { set; get; }
+        double AirSpeed { set; get; }
+        double HeadingDeg { set; get; }
+        double PitchDeg { set; get; }
+        double RollDeg { set; get; }
+        double YawDeg { set; get; }
+        double Aileron { set; get; }
+        double Elevator { set; get; }
+        double Rudder { set; get; }
+        double Throttle { set; get; }
 
         double SliderValue { set; get; }
         double SimulatorSpeed { set; get; }
@@ -34,11 +35,12 @@ namespace milestone1
         void stop();
         void moveSimulatorSpeed(double value);
         void initializingComponentsByPath(string path);
-        void SimpleAnomalyDetector(string learnFile, string testFile);
-        void CircleAnomalyDetector(string learnFile, string testFile);
+        void sendAssembly(Assembly assembly, string learnFilePath, string testFilePath);
+
 
         PlotModel PlotModelCurrent { get; set; }
         PlotModel PlotModelRegression { get; set; }
+        PlotModel PlotModelCurrentCorrelation { get; set; }
 
         public string CurrerntChoice { get; set; }
 
