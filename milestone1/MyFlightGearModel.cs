@@ -12,6 +12,7 @@ using OxyPlot.Series;
 using System.Runtime.InteropServices;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Controls;
 
 namespace milestone1
 {
@@ -20,7 +21,6 @@ namespace milestone1
         ITelnetClient telnetClient;
         volatile Boolean isStopped;
         volatile Boolean isPaused;
-        private ArrayList array;
         private int currentLine;
         private double sliderValue;
         private double simulatorspeed;
@@ -37,12 +37,22 @@ namespace milestone1
         private PlotModel plotModelCurrent;
         private PlotModel plotModelRegression;
         private PlotModel plotModelCurrentCorrelation;
+        private PlotModel plotModelForDll;
+        private PlotModel plotModelAnomalies;
         private string currerntChoice;
         private string correlatedChoice;
+        private string lastChoice;
 
-        private Dictionary<string, ArrayList> dict;
+        private ArrayList detectionFlight;
+        private ArrayList properFlight;
+        private Dictionary<string, ArrayList> detectDict;
+        private Dictionary<string, ArrayList> properDict;
 
         private string[] properties;
+
+        private Assembly assembly;
+        private string detectFilePath;
+        private string properFilePath;
 
         public double SliderValue
         {
@@ -210,7 +220,7 @@ namespace milestone1
         public PlotModel PlotModelCurrent
         {
             get { return plotModelCurrent; }
-            set { plotModelCurrent = value;}
+            set { plotModelCurrent = value; }
         }
 
         public PlotModel PlotModelRegression
@@ -219,11 +229,32 @@ namespace milestone1
             set { plotModelRegression = value; }
         }
 
-        
+
         public PlotModel PlotModelCurrentCorrelation
         {
             get { return plotModelCurrentCorrelation; }
             set { plotModelCurrentCorrelation = value; }
+        }
+
+        public PlotModel PlotModelForDll
+        {
+            get { return plotModelForDll; }
+            set { plotModelForDll = value;
+                NotifyPropertyChanged("PlotModelForDll");
+            }
+        }
+
+        public PlotModel PlotModelAnomalies
+        {
+            get
+            {
+                return plotModelAnomalies;
+            }
+            set
+            {
+                plotModelAnomalies = value;
+                NotifyPropertyChanged("PlotModelAnomalies");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -231,7 +262,7 @@ namespace milestone1
         public MyFlightGearModel(ITelnetClient telnetClient)
         {
             this.telnetClient = telnetClient;
-            this.isStopped = false;
+            this.isStopped = true;
             this.isPaused = false;
             this.simulatorspeed = 1.00;
             createProperties();
@@ -240,15 +271,16 @@ namespace milestone1
             SetUpGraphOfRegression();
             this.currerntChoice = null;
             this.correlatedChoice = null;
+            this.assembly = null;
         }
 
         private void SetUpGraphOfCurrent()
         {
             plotModelCurrent = new PlotModel();
-            plotModelCurrent.TitleFontSize = 14;
-            TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, Title = "Time" };
+            plotModelCurrent.TitleFontSize = 11;
+            TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, IsZoomEnabled = false };
             plotModelCurrent.Axes.Add(timeAxis);
-            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left, IsZoomEnabled = false };
             plotModelCurrent.Axes.Add(valueAxis);
 
 
@@ -257,10 +289,10 @@ namespace milestone1
         private void SetUpGraphOfCorrelated()
         {
             plotModelCurrentCorrelation = new PlotModel();
-            plotModelCurrentCorrelation.TitleFontSize = 14;
-            TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, Title = "Time" };
+            plotModelCurrentCorrelation.TitleFontSize = 11;
+            TimeSpanAxis timeAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, IsZoomEnabled = false };
             plotModelCurrentCorrelation.Axes.Add(timeAxis);
-            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left, IsZoomEnabled = false };
             plotModelCurrentCorrelation.Axes.Add(valueAxis);
 
 
@@ -268,27 +300,27 @@ namespace milestone1
 
         private void SetUpGraphOfRegression()
         {
-            plotModelRegression = new PlotModel();
+            plotModelRegression = new PlotModel() { TitleFontSize = 11, Title = "Linear Regression" };
             LineSeries l = new LineSeries();
             plotModelRegression.Series.Add(l);
-            LinearAxis xAxis = new TimeSpanAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10};
-            plotModelCurrentCorrelation.Axes.Add(xAxis);
-            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left };
-            plotModelCurrentCorrelation.Axes.Add(valueAxis);
+            LinearAxis xAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Bottom, TitleFontSize = 10, IsZoomEnabled = false };
+            plotModelRegression.Axes.Add(xAxis);
+            LinearAxis valueAxis = new LinearAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, Position = AxisPosition.Left, IsZoomEnabled = false };
+            plotModelRegression.Axes.Add(valueAxis);
         }
 
 
-        private void initializeDictionary()
+        private void initializeDictionary(ref Dictionary<string, ArrayList> dict, ArrayList flight)
         {
             dict = new Dictionary<string, ArrayList>();
-            int len = array.Count;
+            int len = flight.Count;
             for (int i = 0; i < properties.Length; i++)
             {
                 ArrayList arr = new ArrayList();
                 int j = 0;
                 while (j < len)
                 {
-                    string line = array[j].ToString();
+                    string line = flight[j].ToString();
                     string[] data = line.Split(",");
                     arr.Add(Convert.ToDouble(data[i]));
                     j++;
@@ -343,23 +375,31 @@ namespace milestone1
             return cov(x, y) / (sigmaX * sigmaY);
         }
 
-        public void initializingComponentsByPath(string path)
+        public void initializingComponentsByPath(string path, string mode)
         {
-            createLocalFile(path);
-            initializeDictionary();
+            if (mode.Equals("detect"))
+            {
+                createLocalFile(path, ref detectionFlight);
+                initializeDictionary(ref detectDict, detectionFlight);
+            }
+            else if (mode.Equals("learn"))
+            {
+                createLocalFile(path, ref properFlight);
+                initializeDictionary(ref properDict, properFlight);
+            }
         }
         string correlatedProperty(string property)
         {
             double maxCorrl = 0;
             double corrl;
             string toRet = "";
-            foreach (string key in dict.Keys)
+            foreach (string key in properDict.Keys)
             {
                 if (property.Equals(key))
                     continue;
                 else
                 {
-                    corrl = Math.Abs(pearson(dict[property], dict[key]));
+                    corrl = Math.Abs(pearson(properDict[property], properDict[key]));
                     if (corrl > maxCorrl)
                     {
                         maxCorrl = corrl;
@@ -385,13 +425,6 @@ namespace milestone1
             double a = cov(x, y) / var(x);
             double b = avg(y) - a * avg(x);
             Func<double, double> func = x => a * x + b;
-            /*            LineSeries line = new LineSeries();
-                        for (int i = 0; i < size; i++)
-                        {
-                            double maor = (double)x[i];
-                            double newY = a * i + b;
-                            line.Points.Add(new DataPoint(i, newY));
-                        }*/
             return func;
         }
 
@@ -432,15 +465,15 @@ namespace milestone1
             }
             return count;
         }
- 
+
         public void connect(string ip, int port)
         {
             telnetClient.connect(ip, port);
         }
 
-        public void createLocalFile(string path)
+        public void createLocalFile(string path, ref ArrayList flight)
         {
-            this.array = new ArrayList();
+            flight = new ArrayList();
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -448,7 +481,7 @@ namespace milestone1
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        array.Add(line);
+                        flight.Add(line);
                     }
                 }
             }
@@ -465,147 +498,128 @@ namespace milestone1
 
         public void resume()
         {
-            if(simulatorspeed!=0)
+            if (simulatorspeed != 0)
                 isPaused = false;
         }
 
         public void stop()
         {
             isStopped = true;
-            telnetClient.write(array[array.Count-1].ToString());
+            telnetClient.write(detectionFlight[detectionFlight.Count - 1].ToString());
             telnetClient.disconnect();
         }
 
         public void start()
         {
-         
             currentLine = 0;
-            string lastChoice = null;
+            lastChoice = null;
             int lastLine = 0;
+            isStopped = false;
 
             new Thread(delegate ()
+            {
+                int len = detectionFlight.Count;
+                Boolean innerStopped = false;
+                while (!isStopped)
                 {
-                    int len = array.Count;
-                    Boolean innerStopped=false;
-                    //FunctionSeries fs = new();
-                    while (!isStopped)
+                    for (; currentLine < len; currentLine++)
                     {
-                        for (; currentLine < len; currentLine++)
-                        {
-                            string line = array[currentLine].ToString();
-                            string[] data = line.Split(",");
-                            SliderValue = getSliderValue();
+                        string line = detectionFlight[currentLine].ToString();
+                        SliderValue = getSliderValue();
 
-                            Aileron = (double)dict["aileron"][currentLine];
-                            Elevator = (double)dict["elevator"][currentLine];
-                            Rudder = (double)dict["rudder"][currentLine];
-                            Throttle = (double)dict["throttle"][currentLine];
-                            Altitude = (double)dict["altitude-ft"][currentLine];
-                            RollDeg = (double)dict["roll-deg"][currentLine];
-                            PitchDeg = (double)dict["pitch-deg"][currentLine];
-                            HeadingDeg = (double)dict["heading-deg"][currentLine];
-                            YawDeg = (double)dict["side-slip-deg"][currentLine];
-                            AirSpeed = (double)dict["airspeed-kt"][currentLine];
-                            if (currerntChoice != null && currentLine % 10 == 0)
+                        updateFlightData();
+
+                        if (currerntChoice != null && currentLine % 10 == 0)
+                        {
+                            buildAllGraphs(len, ref lastChoice, ref lastLine);
+                        }
+                        if (!isPaused && !isStopped)
+                        {
+                            telnetClient.write(line);
+                            Thread.Sleep((int)(100.0 / SimulatorSpeed));
+                        }
+                        else if (isPaused)
+                        {
+                            while (isPaused)
                             {
-                                buildAlldGraphs(len, ref lastChoice, ref lastLine);
-                            }
-                            if (!isPaused && !isStopped)
-                            {
-                                telnetClient.write(line);
-                                Thread.Sleep((int)(100.0 / SimulatorSpeed));
-                            }
-                            else if (isPaused)
-                            {
-                                while (isPaused)
+                                if (currentLine != lastLine)
                                 {
-                                    if (currerntChoice != null && (!currerntChoice.Equals(lastChoice) || !currentLine.Equals(lastLine)))
+                                    updateFlightData();
+                                    if (currerntChoice != null)
                                     {
-                                        buildAlldGraphs(len, ref lastChoice, ref lastLine);
+                                        buildAllGraphs(len, ref lastChoice, ref lastLine);
                                     }
                                 }
-                            }
-                            else // if (isStopped)
-                            {
-                                innerStopped = true;
-                                break;
+                                else if (currerntChoice != null && !currerntChoice.Equals(lastChoice))
+                                {
+                                    buildAllGraphs(len, ref lastChoice, ref lastLine);
+                                }
                             }
                         }
-                        if (innerStopped)
-                            break;
-                        if (currerntChoice != null && !currerntChoice.Equals(lastChoice))
+                        else // if (isStopped)
                         {
-                            buildAlldGraphs(len, ref lastChoice, ref lastLine);
+                            innerStopped = true;
+                            break;
                         }
                     }
-                }).Start();
+                    if (innerStopped)
+                        break;
+                    if (currerntChoice != null && !currerntChoice.Equals(lastChoice))
+                    {
+                        buildAllGraphs(len, ref lastChoice, ref lastLine);
+                    }
+                }
+            }).Start();
         }
 
-        private void buildAlldGraphs(int len, ref string lastChoice, ref int lastLine)
+        private void updateFlightData()
         {
+            Aileron = (double)detectDict["aileron"][currentLine];
+            Elevator = (double)detectDict["elevator"][currentLine];
+            Rudder = (double)detectDict["rudder"][currentLine];
+            Throttle = (double)detectDict["throttle"][currentLine];
+            Altitude = (double)detectDict["altitude-ft"][currentLine];
+            RollDeg = (double)detectDict["roll-deg"][currentLine];
+            PitchDeg = (double)detectDict["pitch-deg"][currentLine];
+            HeadingDeg = (double)detectDict["heading-deg"][currentLine];
+            YawDeg = (double)detectDict["side-slip-deg"][currentLine];
+            AirSpeed = (double)detectDict["airspeed-kt"][currentLine];
+        }
+
+        private void buildAllGraphs(int len, ref string lastChoice, ref int lastLine)
+        {
+            if (!currerntChoice.Equals(lastChoice))
+                correlatedChoice = correlatedProperty(currerntChoice);
             // build current Graph
-            correlatedChoice = correlatedProperty(currerntChoice);
             LineSeries l = new LineSeries();
-            buildGraph(plotModelCurrent,l, currerntChoice);
+            buildOneGraph(plotModelCurrent, l, currerntChoice);
 
             if (!correlatedChoice.Equals(""))
             {
                 // build correlatedChoice
                 LineSeries line = new LineSeries();
-                buildGraph(plotModelCurrentCorrelation,line, correlatedChoice);
-            
+                buildOneGraph(plotModelCurrentCorrelation, line, correlatedChoice);
+
                 // build linearReg
-                ArrayList x = dict[currerntChoice];
-                ArrayList y = dict[correlatedChoice];
-                ArrayList points = new ArrayList();
-                double maxX = 0, minX = 0;
-
-                for (int i = 0; i < len; i++)
-                {
-                    double currentX = (double)x[i];
-                    double currentY = (double)y[i];
-                    maxX = Math.Max(maxX, currentX);
-                    minX = Math.Min(minX, currentX);
-                    DataPoint p = new DataPoint(currentX, currentY);
-                    points.Add(p);
-                }
-
-                Func<double, double> func = linearReg(points);
-                FunctionSeries fs = new FunctionSeries(func, minX, maxX, len, null);
-                LineSeries lineOfLastSeconds = new();
-                lineOfLastSeconds.LineStyle = LineStyle.None;
-                lineOfLastSeconds.MarkerType = MarkerType.Circle;
-                lineOfLastSeconds.MarkerSize = 2;
-                lineOfLastSeconds.MarkerFill = OxyColors.Black;
-                int start = Math.Max(0, currentLine - 300);
-                int end = currentLine;
-                for (int i = start; i < end; i++)
-                {
-                    lineOfLastSeconds.Points.Add(new DataPoint((double)dict[currerntChoice][i], (double)dict[correlatedChoice][i]));
-                }
-                plotModelRegression.Series.Clear();
-                plotModelRegression.Series.Add(fs);
-                plotModelRegression.Series.Add(lineOfLastSeconds);
-                plotModelRegression.InvalidatePlot(true);
+                buildLinearRegressionGraph(len);
             }
             else
             {
                 plotModelCurrentCorrelation.Series.Clear();
                 plotModelRegression.Series.Clear();
                 plotModelCurrentCorrelation.Title = "No correlated feature";
-
+                plotModelCurrentCorrelation.InvalidatePlot(true);
+                plotModelRegression.InvalidatePlot(true);
             }
-            plotModelCurrentCorrelation.InvalidatePlot(true);
-            plotModelRegression.InvalidatePlot(true);
             lastLine = currentLine;
             lastChoice = currerntChoice;
         }
 
-        private void buildGraph(PlotModel plotModel,LineSeries l, string choice)
+        private void buildOneGraph(PlotModel plotModel, LineSeries l, string choice)
         {
             for (int i = 0; i <= currentLine - 10; i += 10)
             {
-                l.Points.Add(new DataPoint(i, (double)dict[choice][i]));
+                l.Points.Add(new DataPoint(i, (double)detectDict[choice][i]));
             }
             plotModel.Series.Clear();
             plotModel.Series.Add(l);
@@ -613,31 +627,70 @@ namespace milestone1
             plotModel.InvalidatePlot(true);
         }
 
-        public void sendAssembly(Assembly assembly, string learnFilePath, string testFilePath)
+        private void buildLinearRegressionGraph(int len)
         {
-            string name = assembly.FullName.Split(",")[0];
-            var type = assembly.GetType(name + ".model");
-            var obj = Activator.CreateInstance(type);
-            var method = type.GetMethod("execute");
-            List<string> prop = new List<string>(dict.Keys);
-            PlotModel plotModel= (PlotModel)method.Invoke(obj, new object[] { (string)learnFilePath, (string)testFilePath, prop, CurrerntChoice });
+            FunctionSeries fs = buildLinearRegressionLine(len);
+            LineSeries lineOfLastSeconds = buildLineforLastSeconds();
+            plotModelRegression.Series.Clear();
+            plotModelRegression.Series.Add(fs);
+            plotModelRegression.Series.Add(lineOfLastSeconds);
+            plotModelRegression.InvalidatePlot(true);
+        }
+
+        private FunctionSeries buildLinearRegressionLine(int len)
+        {
+            // build linearReg
+            ArrayList x = detectDict[currerntChoice];
+            ArrayList y = detectDict[correlatedChoice];
+            ArrayList points = new ArrayList();
+            double maxX = 0, minX = 0;
+
+            for (int i = 0; i < len; i++)
+            {
+                double currentX = (double)x[i];
+                double currentY = (double)y[i];
+                maxX = Math.Max(maxX, currentX);
+                minX = Math.Min(minX, currentX);
+                DataPoint p = new DataPoint(currentX, currentY);
+                points.Add(p);
+            }
+
+            Func<double, double> func = linearReg(points);
+            return new FunctionSeries(func, minX, maxX, len, null);
+        }
+
+        private LineSeries buildLineforLastSeconds()
+        {
+            LineSeries lineOfLastSeconds = new();
+            lineOfLastSeconds.LineStyle = LineStyle.None;
+            lineOfLastSeconds.MarkerType = MarkerType.Circle;
+            lineOfLastSeconds.MarkerSize = 2;
+            lineOfLastSeconds.MarkerFill = OxyColors.Black;
+            int start = Math.Max(0, currentLine - 300);
+            int end = currentLine;
+            for (int i = start; i < end; i++)
+            {
+                lineOfLastSeconds.Points.Add(new DataPoint((double)detectDict[currerntChoice][i], (double)detectDict[correlatedChoice][i]));
+            }
+            return lineOfLastSeconds;
         }
 
         public void moveSlider(double value)
         {
-            currentLine = Convert.ToInt32((value / 100.0) * array.Count);
-            SliderValue = value;
-            if (isPaused&&currentLine<array.Count)
+            if (!isStopped)
             {
-                telnetClient.write(array[currentLine].ToString());
-                Thread.Sleep(100);
+                currentLine = Convert.ToInt32((value / 100.0) * detectionFlight.Count);
+                SliderValue = value;
+                if (isPaused && currentLine < detectionFlight.Count)
+                {
+                    telnetClient.write(detectionFlight[currentLine].ToString());
+                }
             }
-
         }
 
         public double getSliderValue()
         {
-            return Convert.ToDouble((currentLine * 100) / array.Count);
+            return Convert.ToDouble((currentLine * 100) / detectionFlight.Count);
         }
 
         public void moveSimulatorSpeed(double value)
@@ -651,12 +704,35 @@ namespace milestone1
             SimulatorSpeed = value;
         }
 
+        public void initAssembly(Assembly assembly, string detectFilePath, string properFilePath)
+        {
+            this.assembly = assembly;
+            this.detectFilePath = detectFilePath;
+            this.properFilePath = properFilePath;
+            executeDll();
+        }
+        public void executeDll()
+        {
+            new Thread(delegate ()
+            {
+                string name = assembly.FullName.Split(",")[0];
+                var type = assembly.GetType(name + ".model");
+                var obj = Activator.CreateInstance(type);
+                var method = type.GetMethod("execute");
+                PlotModelForDll = (PlotModel)method.Invoke(obj, new object[] { (string)detectFilePath, (string)properFilePath, detectDict, CurrerntChoice });
+                var method2 = type.GetMethod("createAnomalyPoints");
+                PlotModelAnomalies = (PlotModel)method2.Invoke(obj, new object[] { });
+                PlotModelForDll.InvalidatePlot(true);
+                PlotModelAnomalies.InvalidatePlot(true);
+            }).Start();
+        }
+
 
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-    
+
     }
 }

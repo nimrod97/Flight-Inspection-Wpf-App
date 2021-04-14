@@ -5,15 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:milestone1"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="177"
-    Height="140"
+    Width="212"
+    Height="210"
     mc:Ignorable="d">
-    <Grid Margin="-36,-45,-98,-86">
-        <Viewbox Margin="13,38,77,52">
+    <Grid Margin="-133,0,0,0" HorizontalAlignment="Left" Width="573" Height="271" VerticalAlignment="Center">
+        <Viewbox Margin="68,59,149,86">
             <Canvas
                 x:Name="Base"
                 Width="340"
-                Height="340">
+                Height="383">
                 <Ellipse
                     Width="340"
                     Height="340"
@@ -220,20 +220,21 @@
             </Canvas>
 
         </Viewbox>
-        <TextBlock
-            Margin="89,226,136,22"
-            Text="&lt;--rudder--&gt;"
-            TextWrapping="Wrap" />
-        <Slider
-            Margin="64,240,129,6"
-            Maximum="1"
-            Minimum="0"
-            Value="{Binding VM_Rudder, Mode=TwoWay}" />
+        <StackPanel Margin="56,175,137,57" Orientation="Vertical">
+            <TextBlock
+                Text="&lt;--rudder--&gt;"
+                TextWrapping="Wrap" Height="23" Width="72"/>
+            <Slider
+                Maximum="1"
+                Minimum="0"
+                Value="{Binding VM_Rudder, Mode=TwoWay}" Height="25" Width="118" HorizontalAlignment="Stretch"/>
+
+        </StackPanel>
 
         <Slider
             Width="116"
             Height="25"
-            Margin="-50,119,0,0"
+            Margin="100,104,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="1"
@@ -252,7 +253,7 @@
 
         <TextBlock
             Width="88"
-            Margin="-41,107,264,119"
+            Margin="110,96,375,130"
             RenderTransformOrigin="0.5,0.5"
             Text="&lt;--throttle--&gt;"
             TextAlignment="Center"
@@ -267,12 +268,12 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <TextBlock
-            Margin="85,14,147,230"
+            Margin="211,35,167,209"
             Text="&lt;--aileron--&gt;"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="0,105,59,115"
-            HorizontalAlignment="Right"
+            Margin="273,96,0,124"
+            HorizontalAlignment="Left"
             RenderTransformOrigin="0.5,0.5"
             Text="&lt;--elevator--&gt;"
             TextWrapping="Wrap">

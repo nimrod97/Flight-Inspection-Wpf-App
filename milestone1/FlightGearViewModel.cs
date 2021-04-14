@@ -29,6 +29,24 @@ namespace milestone1
             set { model.PlotModelCurrentCorrelation = value; NotifyPropertyChanged("PlotModel"); }
         }
 
+        public PlotModel VM_PlotModelForDll
+        {
+            get { return model.PlotModelForDll; }
+            set { model.PlotModelForDll = value; NotifyPropertyChanged("PlotModelForDll"); }
+        }
+        public PlotModel VM_PlotModelAnomalies
+        {
+            get
+            {
+                return model.PlotModelAnomalies;
+            }
+            set
+            {
+                model.PlotModelAnomalies = value;
+                NotifyPropertyChanged("PlotModelAnomalies");
+            }
+        }
+
 
         public double VM_SliderValue
         {
@@ -63,18 +81,6 @@ namespace milestone1
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
         }
-/*
-        public IList<DataPoint> VM_PointsCurrentChoice
-        {
-            get
-            {
-                return this.model.PointsCurrentChoice;
-            }
-            set
-            {
-
-            }
-        }*/
 
         public void VM_connect(string ip, int port)
         {
@@ -102,7 +108,7 @@ namespace milestone1
             VM_goToEnd();
             model.stop();
         }
-        
+
         public void VM_goRight()
         {
             if (VM_SliderValue < 96)
@@ -128,14 +134,14 @@ namespace milestone1
             VM_SliderValue = 99.5;
         }
 
-        public void VM_initializingComponentsByPath(string path)
+        public void VM_initializingComponentsByPath(string path, string mode)
         {
-            model.initializingComponentsByPath(path);
+            model.initializingComponentsByPath(path, mode);
         }
 
         public void VM_sendAssembly(Assembly assembly, string learnFilePath, string testFilePath)
         {
-            model.sendAssembly(assembly, learnFilePath, testFilePath);
+            model.initAssembly(assembly, learnFilePath, testFilePath);
         }
 
         public double VM_Altitude
@@ -225,6 +231,6 @@ namespace milestone1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }        
+        }
     }
 }

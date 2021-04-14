@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace milestone1
 {
-    interface IFlightGearModel: INotifyPropertyChanged
+    interface IFlightGearModel : INotifyPropertyChanged
     {
         double Altitude { set; get; }
         double AirSpeed { set; get; }
@@ -34,16 +34,17 @@ namespace milestone1
         void resume();
         void stop();
         void moveSimulatorSpeed(double value);
-        void initializingComponentsByPath(string path);
-        void sendAssembly(Assembly assembly, string learnFilePath, string testFilePath);
-
+        void initializingComponentsByPath(string path, string mode);
+        void initAssembly(Assembly assembly, string detectFilePath, string properFilePath);
 
         PlotModel PlotModelCurrent { get; set; }
         PlotModel PlotModelRegression { get; set; }
         PlotModel PlotModelCurrentCorrelation { get; set; }
+        PlotModel PlotModelForDll { get; set; }
+
+        PlotModel PlotModelAnomalies { get; set; }
 
         public string CurrerntChoice { get; set; }
 
-/*        IList<DataPoint> PointsCurrentChoice { get; set; }
-*/    }
+    }
 }

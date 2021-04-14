@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 using System.Drawing;
 using System.Collections;
-
+using System.Reflection;
 
 namespace milestone1
 {
@@ -27,18 +27,15 @@ namespace milestone1
         public DataList()
         {
             InitializeComponent();
-            /*          string [] arr = (string[]) dataListBox.ItemsSource;
-                      int len = arr.Length;
-                      for (int i = 0; i < len; i++)
-                      {
-                          dataListBox.Items.Add(arr[i]);
-                      }*/
-
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             (this.DataContext as FlightGearViewModel).VM_CurrerntChoice = dataListBox.SelectedItem.ToString();
+            if (MainWindow.dllFilePath != null)
+            {
+                (this.DataContext as FlightGearViewModel).VM_sendAssembly(MainWindow.assembly, MainWindow.detectFilePath, MainWindow.properFilePath);
+            }
         }
     }
 }

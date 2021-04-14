@@ -7,11 +7,23 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AnomaliesPoints.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DllGraph.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="FlightDataWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AnomaliesPoints.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DllGraph.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="FlightDataWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

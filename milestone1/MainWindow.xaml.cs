@@ -27,8 +27,10 @@ namespace milestone1
     public partial class MainWindow : Window
     {
         private FlightGearViewModel vm;
-        string learnFilePath;
-        string testFilePath;
+        public static string detectFilePath;		
+        public static string properFilePath;		
+        public static string dllFilePath;
+        public static Assembly assembly;
         volatile Boolean playFlag;
         volatile Boolean stopFlag;
 
@@ -40,6 +42,7 @@ namespace milestone1
             playFlag = false;
             stopFlag = false;
             PropertiesList.DataContext = vm;
+            dllFilePath = null;
         }
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
@@ -54,13 +57,17 @@ namespace milestone1
             if (result == true)
             {
                 FileNameTextBox.Text = openFileDlg.FileName;
-                learnFilePath = openFileDlg.FileName;
-                vm.VM_initializingComponentsByPath(learnFilePath);
+                detectFilePath = openFileDlg.FileName;
+                vm.VM_initializingComponentsByPath(detectFilePath, "detect");
             }
         }
         private void play_Click(object sender, RoutedEventArgs e)
         {
-            if (stopFlag)
+            if (detectFilePath == null)
+                MessageBox.Show("Load a flight that you want to detect!");
+            else if (properFilePath == null)
+                MessageBox.Show("Load a proper flight!");
+            else if (stopFlag)
             {
                 vm = null;
                 // creating new instance of vm
@@ -69,11 +76,9 @@ namespace milestone1
                 playFlag = false;
                 stopFlag = false;
                 vm.VM_connect("localhost", 5400);
-                vm.VM_initializingComponentsByPath(learnFilePath);
-                vm.VM_start();
                 playFlag = true;
+                vm.VM_start();
             }
-
             else if (!playFlag)
             {
                 vm.VM_connect("localhost", 5400);
@@ -82,9 +87,9 @@ namespace milestone1
             }
             else // pauseFlag is pressed
             {
+                playFlag = true;
                 vm.VM_resume();
             }
-
         }
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -95,34 +100,42 @@ namespace milestone1
 
         private void pause_Click(object sender, RoutedEventArgs e)
         {
-            vm.VM_pause();
+            if (playFlag)
+                vm.VM_pause();
         }
 
         private void stop_Click(object sender, RoutedEventArgs e)
         {
-            stopFlag = true;
-            vm.VM_stop();
+            if (playFlag)
+            {
+                stopFlag = true;
+                vm.VM_stop();
+            }
         }
 
         private void goRight_Click(object sender, RoutedEventArgs e)
         {
-            vm.VM_goRight();
+            if (playFlag)
+                vm.VM_goRight();
 
         }
 
         private void goLeft_Click(object sender, RoutedEventArgs e)
         {
-            vm.VM_goLeft();
+            if (playFlag)
+                vm.VM_goLeft();
         }
 
         private void goToEnd_Click(object sender, RoutedEventArgs e)
         {
-            vm.VM_goToEnd();
+            if (playFlag)
+                vm.VM_goToEnd();
         }
 
         private void goToStart_Click(object sender, RoutedEventArgs e)
         {
-            vm.VM_goToStart();
+            if (playFlag)
+                vm.VM_goToStart();
         }
 
         private void FileNameTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
@@ -173,22 +186,16 @@ namespace milestone1
             if (result == true)
             {
                 DllFileTextBox.Text = openFileDlg.FileName;
-                string dllFileName = openFileDlg.FileName;
-                var assembly = Assembly.LoadFile(dllFileName);
-                vm.VM_sendAssembly(assembly, learnFilePath, testFilePath);
-                //if (assembly.ManifestModule.FullyQualifiedName.EndsWith("SimpleAnomalyDetectorDll.dll")) 
-                //{
-                //    vm.VM_SimpleAnomalyDetector(learnFilePath, testFilePath);
-                //}
-                //else // ends with CircleAnomalyDetectorDll.dll
-                //{
-                //    vm.VM_CircleAnomalyDetector(learnFilePath, testFilePath);
-                //}
-
+                dllFilePath = openFileDlg.FileName;
+                assembly = Assembly.LoadFile(dllFilePath);
+            }
+            if (vm.VM_CurrerntChoice != null && assembly != null && detectFilePath != null && properFilePath != null)
+            {
+                vm.VM_sendAssembly(assembly, detectFilePath, properFilePath);
             }
         }
 
-        private void BrowseTestFileButton_Click(object sender, RoutedEventArgs e)
+        private void BrowseProperFileButton_Click(object sender, RoutedEventArgs e)
         {
             // Create OpenFileDialog
             Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
@@ -200,14 +207,11 @@ namespace milestone1
             if (result == true)
             {
                 testFilePathTextBox.Text = openFileDlg.FileName;
-                testFilePath = openFileDlg.FileName;
-
+                properFilePath = openFileDlg.FileName;
+                vm.VM_initializingComponentsByPath(properFilePath, "learn");
             }
         }
-
-
     }
-
 }
 
 

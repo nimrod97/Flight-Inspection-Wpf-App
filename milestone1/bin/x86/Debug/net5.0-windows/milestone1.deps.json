@@ -10,8 +10,8 @@
         "dependencies": {
           "MaterialDesignThemes": "4.0.0",
           "OxyPlot.Wpf": "2.0.0",
-          "CircleAnomalyDetectorDll": "0.0.0.0",
-          "DllCircleWpf": "1.0.0.0"
+          "DllCircleWpf": "1.0.0.0",
+          "SimpleAnomalyDetectorDll": "0.0.0.0"
         },
         "runtime": {
           "milestone1.dll": {}
@@ -724,19 +724,19 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "CircleAnomalyDetectorDll/0.0.0.0": {
-        "runtime": {
-          "CircleAnomalyDetectorDll.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "DllCircleWpf/1.0.0.0": {
         "runtime": {
           "DllCircleWpf.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SimpleAnomalyDetectorDll/0.0.0.0": {
+        "runtime": {
+          "SimpleAnomalyDetectorDll.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       }
@@ -1287,12 +1287,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "CircleAnomalyDetectorDll/0.0.0.0": {
+    "DllCircleWpf/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "DllCircleWpf/1.0.0.0": {
+    "SimpleAnomalyDetectorDll/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

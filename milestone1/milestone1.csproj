@@ -45,6 +45,9 @@
     <Reference Include="DllCircleWpf">
       <HintPath>..\plugins\DllCircleWpf.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleAnomalyDetectorDll">
+      <HintPath>..\..\..\..\source\repos\DllSimpleWpf\DllSimpleWpf\SimpleAnomalyDetectorDll.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

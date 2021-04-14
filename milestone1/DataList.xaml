@@ -10,8 +10,8 @@
         <ListBox
             x:Name="dataListBox"
             HorizontalContentAlignment="Center"
-            SelectionChanged="ListBox_SelectionChanged" ItemsSource="{Binding VM_Properties}"  
-            
+            SelectionChanged="ListBox_SelectionChanged" ItemsSource="{Binding VM_Properties}" 
+            FontSize="10"
             >
         </ListBox>
 

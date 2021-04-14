@@ -43,22 +43,6 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\120421\milestone1\milestone1\
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\120421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\120421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\120421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.pdb
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Style.baml
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.cache
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.lref
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\bin\x86\Debug\net5.0-windows\milestone1.exe
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\bin\x86\Debug\net5.0-windows\milestone1.deps.json
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.json
@@ -103,6 +87,102 @@ C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\obj
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\OneDrive\שולחן העבודה\updated milestone\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.exe
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.deps.json
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.json
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.dev.json
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.pdb
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignColors.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.Wpf.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\bin\x86\Debug\net5.0-windows\DllCircleWpf.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Style.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.lref
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.g.resources
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.AssemblyInfoInputs.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.AssemblyInfo.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CoreCompileInputs.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CopyComplete
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.baml
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.g.cs
+C:\Users\maors\Desktop\advanced programming 2\130421\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.exe
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.deps.json
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.json
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.dev.json
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.pdb
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignColors.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.Wpf.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\bin\x86\Debug\net5.0-windows\DllCircleWpf.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Style.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.cache
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.lref
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.baml
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.g.resources
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.AssemblyInfoInputs.cache
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.AssemblyInfo.cs
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CoreCompileInputs.cache
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CopyComplete
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
+C:\Users\nimro\Downloads\milestone1\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.exe
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.deps.json
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\milestone1.runtimeconfig.json
@@ -114,10 +194,25 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\OxyPlot.Wpf.dll
-C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\CircleAnomalyDetectorDll.dll
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\DllCircleWpf.dll
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Style.baml
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphRegression.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\Joystick.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.cache
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1_MarkupCompile.lref
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\App.baml
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\AnomaliesPoints.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DataList.baml
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\DllGraph.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\FlightDataWindow.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentChoice.baml
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\GraphCurrentCorrelation.baml
@@ -130,4 +225,9 @@ C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.AssemblyInfo.cs
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CoreCompileInputs.cache
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csproj.CopyComplete
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.dll
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\ref\milestone1.dll
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.pdb
 C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.genruntimeconfig.cache
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\x86\Debug\net5.0-windows\milestone1.csprojAssemblyReference.cache
+C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\bin\x86\Debug\net5.0-windows\SimpleAnomalyDetectorDll.dll
