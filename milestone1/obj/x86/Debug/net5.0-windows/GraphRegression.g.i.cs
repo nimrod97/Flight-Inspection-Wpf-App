@@ -62,7 +62,7 @@ namespace milestone1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/milestone1;component/graphregression.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/milestone1;V1.0.0.0;component/graphregression.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\GraphRegression.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
