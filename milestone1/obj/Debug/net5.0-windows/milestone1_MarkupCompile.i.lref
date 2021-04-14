@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 ﻿C:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.i.cs
 FC:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\App.xaml;;
 FC:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\DataList.xaml;;
 FC:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\FlightDataWindow.xaml;;
 FC:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\Joystick.xaml;;
 FC:\Users\nimro\projects\ADP2-Flight-Inspection-App\milestone1\milestone1\MainWindow.xaml;;
+=======
+﻿C:\Users\barrt\Source\Repos\milestone1\milestone1\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.i.cs
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\App.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\DataList.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\FlightDataWindow.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\GraphCurrentChoice.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\GraphRegression.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\Joystick.xaml;;
+FC:\Users\barrt\Source\Repos\milestone1\milestone1\MainWindow.xaml;;
+>>>>>>> 23640bab86b6c0591f932ae2499580958ae27240
 

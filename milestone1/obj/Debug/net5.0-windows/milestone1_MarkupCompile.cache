@@ -4,17 +4,23 @@
 winexe
 C#
 .cs
-C:\Users\barrt\Desktop\milestone1\milestone1\obj\Debug\net5.0-windows\
+C:\Users\barrt\Source\Repos\milestone1\milestone1\obj\Debug\net5.0-windows\
 milestone1
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\barrt\Desktop\milestone1\milestone1\App.xaml
-5-1452278551
+C:\Users\barrt\Source\Repos\milestone1\milestone1\App.xaml
+7-149096285
 
+<<<<<<< HEAD
 111721923712
 197-1934488814
 DataList.xaml;FlightDataWindow.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
+=======
+15-1392910212
+197811495985
+DataList.xaml;FlightDataWindow.xaml;GraphCurrentChoice.xaml;GraphRegression.xaml;Joystick.xaml;MainWindow.xaml;Style.xaml;
+>>>>>>> 23640bab86b6c0591f932ae2499580958ae27240
 
-False
+True
 

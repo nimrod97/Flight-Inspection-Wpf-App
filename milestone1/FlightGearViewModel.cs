@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.Annotations;
+
 namespace milestone1
 {
     class FlightGearViewModel : INotifyPropertyChanged
     {
         private IFlightGearModel model;
+        public PlotModel VM_PlotModelCurrent
+        {
+            get { return model.PlotModelCurrent; }
+            set { model.PlotModelCurrent = value; NotifyPropertyChanged("PlotModel"); }
+        }
+        public PlotModel VM_PlotModelRegression
+        {
+            get { return model.PlotModelRegression; }
+            set { model.PlotModelRegression = value; NotifyPropertyChanged("PlotModel"); }
+        }
         public double VM_SliderValue
         {
             get
@@ -40,8 +54,19 @@ namespace milestone1
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
-            
         }
+/*
+        public IList<DataPoint> VM_PointsCurrentChoice
+        {
+            get
+            {
+                return this.model.PointsCurrentChoice;
+            }
+            set
+            {
+
+            }
+        }*/
 
         public void VM_connect(string ip, int port)
         {
@@ -49,9 +74,9 @@ namespace milestone1
         }
 
 
-        public void VM_start(string path)
+        public void VM_start()
         {
-            model.start(path);
+            model.start();
         }
 
         public void VM_pause()
@@ -93,6 +118,21 @@ namespace milestone1
         public void VM_goToEnd()
         {
             VM_SliderValue = 99.5;
+        }
+
+        public void VM_initializingComponentsByPath(string path)
+        {
+            model.initializingComponentsByPath(path);
+        }
+
+        public void VM_SimpleAnomalyDetector(string learnFile, string testFile)
+        {
+            model.SimpleAnomalyDetector(learnFile,testFile);
+        }
+
+        public void VM_CircleAnomalyDetector(string learnFile, string testFile)
+        {
+            model.CircleAnomalyDetector(learnFile,testFile);
         }
 
         public float VM_Altitude
@@ -164,6 +204,17 @@ namespace milestone1
             }
         }
 
+        public string VM_CurrerntChoice
+        {
+            get
+            {
+                return model.CurrerntChoice;
+            }
+            set
+            {
+                model.CurrerntChoice = value;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -171,8 +222,6 @@ namespace milestone1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-
-        
+        }        
     }
 }

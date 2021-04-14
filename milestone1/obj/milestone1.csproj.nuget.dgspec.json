@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\milestone1.csproj",
         "packagesPath": "C:\\Users\\nimro\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\nimro\\projects\\ADP2-Flight-Inspection-App\\milestone1\\milestone1\\obj\\",
+=======
+    "C:\\Users\\barrt\\Source\\Repos\\milestone1\\milestone1\\milestone1.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\barrt\\Source\\Repos\\milestone1\\milestone1\\milestone1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\barrt\\Source\\Repos\\milestone1\\milestone1\\milestone1.csproj",
+        "projectName": "milestone1",
+        "projectPath": "C:\\Users\\barrt\\Source\\Repos\\milestone1\\milestone1\\milestone1.csproj",
+        "packagesPath": "C:\\Users\\barrt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\barrt\\Source\\Repos\\milestone1\\milestone1\\obj\\",
+>>>>>>> 23640bab86b6c0591f932ae2499580958ae27240
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
