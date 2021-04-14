@@ -60,9 +60,9 @@ The View then react to the changed data accordingly and shows them.
 * choose some feature to detect and here you go! (:
 
 
-### Collaborators
+## Collaborators
 Developed by Nimrod Gabbay, Noa Miara, Maor Malekan and Bar Tawil.</br>
 
 
-### Explanation video
+## Explanation video
 [https://www.youtube.com/watch?v=nBGUOMIWBaI](https://www.youtube.com/watch?v=nBGUOMIWBaI)
