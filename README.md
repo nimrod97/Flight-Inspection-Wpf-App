@@ -53,7 +53,7 @@ The View then react to the changed data accordingly and shows them.
 <img src="https://github.com/bartawil/milestone1/blob/master/Untitled%20Diagram.jpg" width="650" height="850">
 
 ### Create your own Dll 
-* Implement your own anomalies algoritem.
+* Implement your own anomalies algorithm.
 * make sure your Dll return a graph.
 * add the new dll path in the right place inside the app.
 * choose some feature to detect and here you go! (:
