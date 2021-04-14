@@ -3,7 +3,7 @@ A WPF application that shows data from real flight and allow the user to inspect
 This app made for flight researchers or pilots who want to view this information from certain flight.</br>
 The flight data is basically a CSV file that includes feature as speed, altitude, direction, etc which should be loaded by the user.</br>
 Our app will display the inforamtion from the beginning of the file till the end, just like a movie and also in a graphically display.</br></br>
-<img src = "https://github.com/bartawil/check/blob/main/Capture.PNG" width="650" height="350"></br>
+<img src = "https://github.com/bartawil/milestone1/blob/master/Capture.PNG" width="650" height="400"></br>
 
 
 ## Features
@@ -49,8 +49,8 @@ The Model interacts with FlightGear via TCP connection, continuously send and re
 Next, the ViewModels process the changed data and notifies the Views about the changed data. </br>
 The View then react to the changed data accordingly and shows them.
 
-### [UML](https://github.com/bartawil/milestone1/blob/master/Untitled%20Diagram.pdf)
-<img src="https://github.com/bartawil/milestone1/blob/master/Untitled%20Diagram.jpg">
+### [UML](https://github.com/bartawil/milestone1/blob/master/Untitled%20Diagram.jpg)
+<img src="https://github.com/bartawil/milestone1/blob/master/Untitled%20Diagram.jpg" width="650" height="850">
 
 ### Create your own Dll 
 * Implement your own anomalies algoritem.
