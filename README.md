@@ -1,3 +1,4 @@
+
 # Flight Inspection App
 A WPF application that shows data from real flight and allow the user to inspect the information by distinguish different parameters.</br>
 This app made for flight researchers or pilots who want to view this information from certain flight.</br>
@@ -63,4 +64,4 @@ The View then react to the changed data accordingly and shows them.
 Developed by Nimrod Gabbay, Noa Miara, Maor Malekan and Bar Tawil.</br>
 
 
-### [Explanation video] (https://youtu.be/Bz1GDyKH0jQ)
+### [Explanation video]https://youtu.be/nBGUOMIWBaI
