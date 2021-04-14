@@ -63,4 +63,4 @@ The View then react to the changed data accordingly and shows them.
 Developed by Nimrod Gabbay, Noa Miara, Maor Malekan and Bar Tawil.</br>
 
 
-### [Explanation video](https://user-images.githubusercontent.com/54501031/114748798-efc1b900-9d5a-11eb-9ccf-cdb44e7c822a.mp4)
+### [Explanation video]
