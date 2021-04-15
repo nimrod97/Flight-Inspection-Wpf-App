@@ -17,7 +17,7 @@ Our app will display the inforamtion from the beginning of the file till the end
 * In addition a we will see the two corallated features regression line. 
 * Joystick - displayes the movment of the Elevator and Aileron.
 * Upload file button - upload csv file to learn how normal flight should be.
-* Dll button - upload Dynamic-Link Library of anomaly detector algoritem.
+* Dll button - upload Dynamic-Link Library of anomaly detector algorithm.
 * Anomaly detection graph - after uploading the dll files and choosing a specific feature a graph will display the anomalies that found in the flight. 
 * Anomaly detection slider - you can see the current time step that anomaly occurred next to the Flight slider.
 
@@ -29,7 +29,7 @@ Our app will display the inforamtion from the beginning of the file till the end
               - UML diagram</br>
               - README</br>
 *  milestone1 folder - all project src files.
-*  plugins folder - includes 2 dll (for circle/simple detect algoritems).
+*  plugins folder - includes 2 dll (for circle/simple detect algorithms).
 
 ## Installation and Running
 * Open the FlightGear API or download it right [here](https://www.flightgear.org). </br>
