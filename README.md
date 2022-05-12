@@ -1,20 +1,20 @@
 
 # Flight Inspection App
-A WPF application that shows data from real flight and allow the user to inspect the information by distinguish different parameters.</br>
+A WPF application that shows data from real flight and allows the user to inspect the information by distinguish different parameters.</br>
 This app made for flight researchers or pilots who want to view this information from certain flight.</br>
-The flight data is basically a CSV file that includes feature as speed, altitude, direction, etc which should be loaded by the user.</br>
+The flight data is basically a CSV file that includes features like speed, altitude, direction, etc which should be loaded by the user.</br>
 Our app will display the inforamtion from the beginning of the file till the end, just like a movie and also in a graphically display.</br></br>
 <img src = "https://github.com/bartawil/milestone1/blob/master/Capture.PNG" width="650" height="400"></br>
 
 
 ## Features
 * Open button - upload csv the flight data that we want to investigate.
-* Play button - start the simulation.
+* Play button - starts the simulation.
 * Media player - allows you to jump, stop, pause just like real media players.
 * Flight slider - allows the user to skip to any time on the flight by scrolling controller as usually designd on media players.
 * Speed slider - changes the speed of the simulator.
 * Graphs - by choosing a flight feature from the list you can see its progress on a graph and also view the most correlative feature next to him </br>
-* In addition a we will see the two corallated features regression line. 
+* In addition a we will see the two correlated features regression line. 
 * Joystick - displayes the movment of the Elevator and Aileron.
 * Upload file button - upload csv file to learn how normal flight should be.
 * Dll button - upload Dynamic-Link Library of anomaly detector algorithm.
@@ -24,7 +24,7 @@ Our app will display the inforamtion from the beginning of the file till the end
 ## Project files
 * Main folder - includes the sln project file that openes the whole project</br>
               - the CSV's flight files</br>
-              - palyback_small</br>
+              - playback_small</br>
               - c++ dll files</br>
               - UML diagram</br>
               - README</br>
@@ -33,23 +33,23 @@ Our app will display the inforamtion from the beginning of the file till the end
 
 ## Installation and Running
 * Open the FlightGear API or download it right [here](https://www.flightgear.org). </br>
-* On the setting add to the addional settings this commend: </br>
+* On the setting add to the addional settings this command: </br>
   --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small </br>
   --fdm=null. </br>
 * Add the file [playback_small.xml](https://github.com/bartawil/milestone1/blob/master/playback_small.xml) to "C:\Program Files\FlightGear 2020.3.6\data\Protocol"
 * Download the project by git clone
-* Make sure you already have the Oxplot lib on your IDE.
+* Make sure you already have the Oxyplot lib on your IDE.
 * Compile with x86 Dll.
 * Run and Upload 2 CSV file: </br>
   * normal flight file
   * test flight file 
 * Dll: </br>
-  In addition, if we want to use an anomaly detection algorithm we need to upload an anomaly detection DLL from the plagin folder. </br>
+  In addition, if we want to use an anomaly detection algorithm we need to upload an anomaly detection DLL from the plugin folder. </br>
   After loading the files, we can press the play button to run the flight. </br>
   To detect a particular feature, we can click on it from the list on the left side of the screen. When we click on the data, we can see the following graphs:
   * The upper left graph - shows the data of the feature that we selected.
   * The upper right graph - shows (if there is one) the data of the most correlative feature to the feature we selected.
-  * The graph in the center of the screen - shows the linear regression line of the feature we selected and the feature that is most correlative to it.  In addition to the   line, we can see the points of the last 30 second on which the line was built.
+  * The graph in the center of the screen - shows the linear regression line of the feature we selected and the feature that is most correlative to it.  In addition to the line, we can see the points of the last 30 second on which the line was built.
   - The graph that shows the data we received from the anomaly detection algorithm - The graph shows the anomalies points and mark them. We can see on the slider the times that these points have occurred.
 
 
